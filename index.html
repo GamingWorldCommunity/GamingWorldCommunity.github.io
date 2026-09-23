@@ -1,28 +1,608 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaming World Community</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gaming World Community</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: #050510;
+    overflow-x: hidden;
+}
+
+/* Hareketli neon arka plan */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.35;
+    z-index: -1;
+    animation: moveGlow 10s infinite alternate ease-in-out;
+}
+
+body::before {
+    background: #6a00ff;
+    top: -150px;
+    left: -150px;
+}
+
+body::after {
+    background: #00d9ff;
+    right: -150px;
+    bottom: -150px;
+    animation-delay: 3s;
+}
+
+@keyframes moveGlow {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(100px, 80px) scale(1.2);
+    }
+    100% {
+        transform: translate(-50px, 120px) scale(1);
+    }
+}
+
+.container {
+    width: min(100% - 30px, 1050px);
+    margin: auto;
+    padding: 25px 0 50px;
+}
+
+/* Dil seçici */
+.language {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 35px;
+}
+
+.language button {
+    border: 1px solid #7d4dff;
+    background: rgba(20, 10, 50, 0.8);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.language button:hover,
+.language button.active {
+    background: #6d2cff;
+    box-shadow: 0 0 20px #7b35ff;
+}
+
+/* Başlık */
+.hero {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.logo {
+    font-size: 65px;
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        text-shadow: 0 0 10px #8c42ff;
+    }
+    to {
+        text-shadow:
+            0 0 20px #8c42ff,
+            0 0 40px #00d9ff;
+    }
+}
+
+h1 {
+    font-size: clamp(35px, 7vw, 70px);
+    background: linear-gradient(90deg, #ffffff, #9b5cff, #00e5ff);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 900;
+}
+
+.hero p {
+    max-width: 750px;
+    margin: 15px auto;
+    color: #d8d8e8;
+    line-height: 1.7;
+}
+
+/* Kartlar */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: rgba(10, 10, 30, 0.78);
+    border: 1px solid #653cff;
+    border-radius: 22px;
+    padding: 25px;
+    box-shadow:
+        0 0 15px rgba(100, 50, 255, 0.25),
+        inset 0 0 25px rgba(100, 50, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition: 0.35s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 0 30px rgba(120, 50, 255, 0.6),
+        inset 0 0 30px rgba(120, 50, 255, 0.08);
+}
+
+.card h2 {
+    margin-bottom: 18px;
+    font-size: 25px;
+}
+
+.card-description {
+    color: #aaaac0;
+    margin-bottom: 18px;
+}
+
+/* Link butonları */
+.link {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background: rgba(30, 20, 55, 0.9);
+    border: 1px solid #6240ff;
+    padding: 15px 18px;
+    border-radius: 14px;
+    margin-top: 12px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.link:hover {
+    transform: translateX(5px);
+    background: rgba(90, 40, 180, 0.5);
+    box-shadow: 0 0 20px #743dff;
+}
+
+/* Telegram oyun bölümleri */
+.game-box {
+    border: 1px solid rgba(0, 200, 255, 0.4);
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.game-box h3 {
+    margin-bottom: 10px;
+}
+
+/* Discord */
+.discord {
+    grid-column: 1 / -1;
+    border-color: #7b5cff;
+}
+
+.discord-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+.discord-categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.category {
+    background: rgba(20, 15, 45, 0.8);
+    border: 1px solid #5540d9;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.category h3 {
+    margin-bottom: 10px;
+}
+
+.category p {
+    color: #aaaac0;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+footer {
+    text-align: center;
+    margin-top: 45px;
+    color: #77778d;
+    font-size: 14px;
+}
+
+/* Mobil */
+@media (max-width: 750px) {
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .discord {
+        grid-column: auto;
+    }
+
+    .discord-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .discord-categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .logo {
+        font-size: 50px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .container {
+        width: min(100% - 20px, 1050px);
+    }
+
+    .discord-categories {
+        grid-template-columns: 1fr;
+    }
+
+    .language button {
+        padding: 9px 14px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-  <h1>🎮 Gaming World Community</h1>
-  <p>Oyun dünyasının topluluk merkezi!</p>
+<div class="container">
 
-  <a href="DISCORD_LINK">💬 Discord</a>
-  <br><br>
+    <!-- Dil -->
+    <div class="language">
+        <button id="trBtn" class="active" onclick="setLanguage('tr')">
+            🇹🇷 Türkçe
+        </button>
 
-  <a href="https://t.me/oyundunyasi_takas_sohbet">📢 Telegram</a>
-  <br><br>
+        <button id="enBtn" onclick="setLanguage('en')">
+            🇬🇧 English
+        </button>
+    </div>
 
-  <a href="YOUTUBE_LINK">▶️ YouTube</a>
-  <br><br>
+    <!-- Başlık -->
+    <section class="hero">
 
-  <a href="INSTAGRAM_LINK">📸 Instagram</a>
-  <br><br>
+        <div class="logo">♛</div>
 
-  <a href="ROBLOX_LINK">🎮 Roblox</a>
+        <h1>Gaming World Community</h1>
+
+        <p id="description">
+            🎮 Oyun dünyasının buluşma noktası! Güncel içerikler,
+            videolar, topluluk etkinlikleri ve oyun dünyasından
+            daha fazlası için bizi takip et.
+        </p>
+
+    </section>
+
+    <!-- Ana bağlantılar -->
+    <div class="grid">
+
+        <!-- TikTok -->
+        <div class="card">
+
+            <h2>🎵 TikTok</h2>
+
+            <p class="card-description" id="tiktokDesc">
+                Bizi TikTok'ta takip et!
+            </p>
+
+            <a class="link" href="BURAYA_TIKTOK_ANA_LINK" target="_blank">
+                👤 <span id="tiktokMain">Ana Hesap</span>
+            </a>
+
+            <a class="link" href="BURAYA_TIKTOK_SCRIPT_LINK" target="_blank">
+                📜 <span id="tiktokScript">Script Hesabı</span>
+            </a>
+
+        </div>
+
+        <!-- YouTube -->
+        <div class="card">
+
+            <h2>▶️ YouTube</h2>
+
+            <p class="card-description" id="youtubeDesc">
+                Videolarımızı kaçırma!
+            </p>
+
+            <a class="link" href="BURAYA_YOUTUBE_ANA_LINK" target="_blank">
+                👤 <span id="youtubeMain">Ana Kanal</span>
+            </a>
+
+            <a class="link" href="BURAYA_YOUTUBE_SCRIPT_LINK" target="_blank">
+                📜 <span id="youtubeScript">Script Kanalı</span>
+            </a>
+
+        </div>
+
+        <!-- Telegram -->
+        <div class="card">
+
+            <h2>📢 Telegram</h2>
+
+            <p class="card-description" id="telegramDesc">
+                Kanallarımıza ve gruplarımıza katıl!
+            </p>
+
+            <!-- Car Parking -->
+            <div class="game-box">
+
+                <h3>🚗 Car Parking</h3>
+
+                <a class="link" href="BURAYA_CAR_PARKING_SCRIPT_LINK" target="_blank">
+                    📜 <span id="carScript">Script Kanalı</span>
+                </a>
+
+                <a class="link" href="BURAYA_CAR_PARKING_TAKAS_LINK" target="_blank">
+                    💬 <span id="carChat">Sohbet & Takas Grubu</span>
+                </a>
+
+            </div>
+
+            <!-- Roblox -->
+            <div class="game-box">
+
+                <h3>🎮 Roblox</h3>
+
+                <a class="link" href="BURAYA_ROBLOX_SCRIPT_LINK" target="_blank">
+                    📜 <span id="robloxScript">Script Kanalı</span>
+                </a>
+
+                <a class="link" href="BURAYA_ROBLOX_TAKAS_LINK" target="_blank">
+                    💬 <span id="robloxChat">Sohbet & Takas Grubu</span>
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Instagram -->
+        <div class="card">
+
+            <h2>📸 Instagram</h2>
+
+            <p class="card-description" id="instagramDesc">
+                Güncel paylaşımlarımızı takip et!
+            </p>
+
+            <a class="link" href="BURAYA_INSTAGRAM_ANA_LINK" target="_blank">
+                👤 <span id="instagramMain">Ana Hesap</span>
+            </a>
+
+            <a class="link" href="BURAYA_INSTAGRAM_SCRIPT_LINK" target="_blank">
+                📜 <span id="instagramScript">Script Hesabı</span>
+            </a>
+
+        </div>
+
+        <!-- Discord -->
+        <div class="card discord">
+
+            <h2>💬 Discord</h2>
+
+            <p class="card-description" id="discordDesc">
+                Tüm oyunlarımız için tek topluluk sunucusu!
+            </p>
+
+            <div class="discord-layout">
+
+                <div>
+
+                    <p id="discordText">
+                        Gaming World Community Discord sunucumuza
+                        katılarak farklı oyun topluluklarına,
+                        sohbetlere, takaslara ve etkinliklere ulaşabilirsin.
+                    </p>
+
+                    <a class="link"
+                       href="BURAYA_DISCORD_LINK"
+                       target="_blank">
+
+                        🚀 <span id="discordJoin">Sunucuya Katıl</span>
+
+                    </a>
+
+                </div>
+
+                <div class="discord-categories">
+
+                    <div class="category">
+                        <h3>💬 Genel</h3>
+                        <p id="generalText">
+                            Duyurular<br>
+                            Sohbet<br>
+                            Medya
+                        </p>
+                    </div>
+
+                    <div class="category">
+                        <h3>🚗 Car Parking</h3>
+                        <p id="carDiscordText">
+                            Sohbet<br>
+                            Takas<br>
+                            Script
+                        </p>
+                    </div>
+
+                    <div class="category">
+                        <h3>🚘 VAR Parking</h3>
+                        <p id="varDiscordText">
+                            Sohbet<br>
+                            Takas<br>
+                            Script
+                        </p>
+                    </div>
+
+                    <div class="category">
+                        <h3>🎮 Roblox</h3>
+                        <p id="robloxDiscordText">
+                            Sohbet<br>
+                            Takas<br>
+                            Script
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        ♛ Gaming World Community
+        <br>
+        <span id="footerText">Together Stronger • More Than Just a Community</span>
+    </footer>
+
+</div>
+
+<script>
+
+const translations = {
+
+    tr: {
+
+        description:
+        "🎮 Oyun dünyasının buluşma noktası! Güncel içerikler, videolar, topluluk etkinlikleri ve oyun dünyasından daha fazlası için bizi takip et.",
+
+        tiktokDesc: "Bizi TikTok'ta takip et!",
+        tiktokMain: "Ana Hesap",
+        tiktokScript: "Script Hesabı",
+
+        youtubeDesc: "Videolarımızı kaçırma!",
+        youtubeMain: "Ana Kanal",
+        youtubeScript: "Script Kanalı",
+
+        telegramDesc: "Kanallarımıza ve gruplarımıza katıl!",
+        carScript: "Script Kanalı",
+        carChat: "Sohbet & Takas Grubu",
+        robloxScript: "Script Kanalı",
+        robloxChat: "Sohbet & Takas Grubu",
+
+        instagramDesc: "Güncel paylaşımlarımızı takip et!",
+        instagramMain: "Ana Hesap",
+        instagramScript: "Script Hesabı",
+
+        discordDesc: "Tüm oyunlarımız için tek topluluk sunucusu!",
+        discordText:
+        "Gaming World Community Discord sunucumuza katılarak farklı oyun topluluklarına, sohbetlere, takaslara ve etkinliklere ulaşabilirsin.",
+        discordJoin: "Sunucuya Katıl",
+
+        generalText: "Duyurular<br>Sohbet<br>Medya",
+        carDiscordText: "Sohbet<br>Takas<br>Script",
+        varDiscordText: "Sohbet<br>Takas<br>Script",
+        robloxDiscordText: "Sohbet<br>Takas<br>Script",
+
+        footerText: "Together Stronger • More Than Just a Community"
+    },
+
+    en: {
+
+        description:
+        "🎮 Your hub for the gaming community! Follow us for the latest content, videos, community events and more from the world of gaming.",
+
+        tiktokDesc: "Follow us on TikTok!",
+        tiktokMain: "Main Account",
+        tiktokScript: "Script Account",
+
+        youtubeDesc: "Don't miss our videos!",
+        youtubeMain: "Main Channel",
+        youtubeScript: "Script Channel",
+
+        telegramDesc: "Join our channels and groups!",
+        carScript: "Script Channel",
+        carChat: "Chat & Trading Group",
+        robloxScript: "Script Channel",
+        robloxChat: "Chat & Trading Group",
+
+        instagramDesc: "Follow us for our latest posts!",
+        instagramMain: "Main Account",
+        instagramScript: "Script Account",
+
+        discordDesc: "One community server for all our games!",
+        discordText:
+        "Join the Gaming World Community Discord server to access different gaming communities, chats, trading areas and events.",
+        discordJoin: "Join Server",
+
+        generalText: "Announcements<br>Chat<br>Media",
+        carDiscordText: "Chat<br>Trading<br>Scripts",
+        varDiscordText: "Chat<br>Trading<br>Scripts",
+        robloxDiscordText: "Chat<br>Trading<br>Scripts",
+
+        footerText: "Together Stronger • More Than Just a Community"
+    }
+
+};
+
+function setLanguage(lang) {
+
+    localStorage.setItem("language", lang);
+
+    const data = translations[lang];
+
+    Object.keys(data).forEach(id => {
+
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.innerHTML = data[id];
+        }
+
+    });
+
+    document.getElementById("trBtn")
+        .classList.toggle("active", lang === "tr");
+
+    document.getElementById("enBtn")
+        .classList.toggle("active", lang === "en");
+}
+
+const savedLanguage = localStorage.getItem("language") || "tr";
+
+setLanguage(savedLanguage);
+
+</script>
 
 </body>
 </html>
