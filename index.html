@@ -10,6 +10,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
 body{
@@ -59,6 +60,7 @@ body::before{
     cursor:pointer;
     font-size:14px;
     transition:.25s;
+    -webkit-tap-highlight-color:transparent;
 }
 
 .lang-buttons button:hover,
@@ -133,7 +135,9 @@ body::before{
     padding:13px 15px;
     border-radius:12px;
     margin-top:9px;
-    transition:.25s;
+    transition:.18s;
+    -webkit-tap-highlight-color:transparent;
+    user-select:none;
 }
 
 .link:hover{
@@ -143,10 +147,29 @@ body::before{
     box-shadow:0 0 18px rgba(140,0,255,.2);
 }
 
+.link:active{
+    transform:scale(.97);
+    background:rgba(140,40,255,.25);
+    box-shadow:0 0 24px rgba(160,40,255,.45);
+}
+
 .link span:first-child{
     display:flex;
     align-items:center;
     gap:9px;
+}
+
+.platform-icon{
+    width:22px;
+    height:22px;
+    object-fit:contain;
+    flex:none;
+    filter:drop-shadow(0 0 4px rgba(255,255,255,.15));
+}
+
+.sub-icon{
+    width:19px;
+    height:19px;
 }
 
 .arrow{
@@ -204,15 +227,24 @@ footer{
     <!-- TIKTOK -->
     <div class="card">
         <div class="card-title">
-            🎵 <span data-i18n="tiktok">TikTok</span>
+            <img class="platform-icon"
+                 src="https://cdn.simpleicons.org/tiktok/ffffff"
+                 alt="TikTok">
+            <span data-i18n="tiktok">TikTok</span>
         </div>
 
-        <a class="link" href="BURAYA_TIKTOK_ANA_LINK" target="_blank">
+        <a class="link"
+           href="https://www.tiktok.com/@oyundunyasi.tr"
+           target="_blank"
+           rel="noopener">
             <span>👤 <span data-i18n="mainAccount">Ana Hesap</span></span>
             <span class="arrow">↗</span>
         </a>
 
-        <a class="link" href="BURAYA_TIKTOK_SCRIPT_LINK" target="_blank">
+        <a class="link"
+           href="BURAYA_TIKTOK_SCRIPT_LINK"
+           target="_blank"
+           rel="noopener">
             <span>📜 <span data-i18n="scriptAccount">Script Hesabı</span></span>
             <span class="arrow">↗</span>
         </a>
@@ -221,15 +253,24 @@ footer{
     <!-- YOUTUBE -->
     <div class="card">
         <div class="card-title">
-            ▶️ <span data-i18n="youtube">YouTube</span>
+            <img class="platform-icon"
+                 src="https://cdn.simpleicons.org/youtube/ffffff"
+                 alt="YouTube">
+            <span data-i18n="youtube">YouTube</span>
         </div>
 
-        <a class="link" href="BURAYA_YOUTUBE_ANA_LINK" target="_blank">
+        <a class="link"
+           href="https://www.youtube.com/@Game_WorldHub"
+           target="_blank"
+           rel="noopener">
             <span>📺 <span data-i18n="mainChannel">Ana Kanal</span></span>
             <span class="arrow">↗</span>
         </a>
 
-        <a class="link" href="BURAYA_YOUTUBE_SCRIPT_LINK" target="_blank">
+        <a class="link"
+           href="BURAYA_YOUTUBE_SCRIPT_LINK"
+           target="_blank"
+           rel="noopener">
             <span>📜 <span data-i18n="scriptChannel">Script Kanalı</span></span>
             <span class="arrow">↗</span>
         </a>
@@ -238,19 +279,33 @@ footer{
     <!-- TELEGRAM -->
     <div class="card">
         <div class="card-title">
-            ✈️ <span data-i18n="telegram">Telegram</span>
+            <img class="platform-icon"
+                 src="https://cdn.simpleicons.org/telegram/ffffff"
+                 alt="Telegram">
+            <span data-i18n="telegram">Telegram</span>
         </div>
 
         <!-- ROBLOX -->
         <div class="subcategory">
-            <h3>🎮 <span data-i18n="roblox">Roblox</span></h3>
+            <h3>
+                <img class="platform-icon sub-icon"
+                     src="https://cdn.simpleicons.org/roblox/ffffff"
+                     alt="Roblox">
+                <span data-i18n="roblox">Roblox</span>
+            </h3>
 
-            <a class="link" href="BURAYA_ROBLOX_SCRIPT_TELEGRAM_LINK" target="_blank">
+            <a class="link"
+               href="https://t.me/World_GameHub"
+               target="_blank"
+               rel="noopener">
                 <span>📜 <span data-i18n="robloxScript">Roblox Script Kanalı</span></span>
                 <span class="arrow">↗</span>
             </a>
 
-            <a class="link" href="BURAYA_ROBLOX_CHAT_TELEGRAM_LINK" target="_blank">
+            <a class="link"
+               href="https://t.me/+TG8oigYcB8szMjI8"
+               target="_blank"
+               rel="noopener">
                 <span>💬 <span data-i18n="robloxChat">Roblox Sohbet & Takas Grubu</span></span>
                 <span class="arrow">↗</span>
             </a>
@@ -258,27 +313,41 @@ footer{
 
         <!-- CAR PARKING -->
         <div class="subcategory">
-            <h3>🚗 <span data-i18n="carParking">Car Parking</span></h3>
+            <h3>
+                🚗 <span data-i18n="carParking">Car Parking</span>
+            </h3>
 
-            <a class="link" href="BURAYA_CAR_PARKING_SCRIPT_TELEGRAM_LINK" target="_blank">
+            <a class="link"
+               href="https://t.me/oyundunyasitr"
+               target="_blank"
+               rel="noopener">
                 <span>📜 <span data-i18n="carScript">Car Parking Script Kanalı</span></span>
                 <span class="arrow">↗</span>
             </a>
 
-            <a class="link" href="BURAYA_CAR_PARKING_CHAT_TELEGRAM_LINK" target="_blank">
+            <a class="link"
+               href="https://t.me/oyundunyasi_takas_sohbet"
+               target="_blank"
+               rel="noopener">
                 <span>💬 <span data-i18n="carChat">Car Parking Sohbet & Takas Grubu</span></span>
                 <span class="arrow">↗</span>
             </a>
         </div>
     </div>
 
-    <!-- ROBLOX GROUP - TELEGRAMDAN AYRI -->
+    <!-- ROBLOX GROUP -->
     <div class="card">
         <div class="card-title">
-            🟦 <span data-i18n="robloxGroupTitle">Roblox Group</span>
+            <img class="platform-icon"
+                 src="https://cdn.simpleicons.org/roblox/ffffff"
+                 alt="Roblox">
+            <span data-i18n="robloxGroupTitle">Roblox Group</span>
         </div>
 
-        <a class="link single-link" href="BURAYA_ROBLOX_GROUP_LINK" target="_blank">
+        <a class="link single-link"
+           href="https://www.roblox.com/share/g/881008385"
+           target="_blank"
+           rel="noopener">
             <span>👥 <span data-i18n="robloxGroup">Roblox Grubu</span></span>
             <span class="arrow">↗</span>
         </a>
@@ -287,11 +356,24 @@ footer{
     <!-- DISCORD -->
     <div class="card">
         <div class="card-title">
-            💬 <span data-i18n="discord">Discord</span>
+            <img class="platform-icon"
+                 src="https://cdn.simpleicons.org/discord/ffffff"
+                 alt="Discord">
+            <span data-i18n="discord">Discord</span>
         </div>
 
-        <a class="link single-link" href="BURAYA_DISCORD_LINK" target="_blank">
-            <span>🎮 <span data-i18n="gamingWorldCommunity">Gaming World Community</span></span>
+        <a class="link single-link"
+           href="https://discord.gg/ATnHqyeJvt"
+           target="_blank"
+           rel="noopener">
+            <span>
+                <img class="platform-icon sub-icon"
+                     src="https://cdn.simpleicons.org/discord/ffffff"
+                     alt="Discord">
+                <span data-i18n="gamingWorldCommunity">
+                    Gaming World Community
+                </span>
+            </span>
             <span class="arrow">↗</span>
         </a>
     </div>
@@ -299,15 +381,24 @@ footer{
     <!-- INSTAGRAM -->
     <div class="card">
         <div class="card-title">
-            📸 <span data-i18n="instagram">Instagram</span>
+            <img class="platform-icon"
+                 src="https://cdn.simpleicons.org/instagram/ffffff"
+                 alt="Instagram">
+            <span data-i18n="instagram">Instagram</span>
         </div>
 
-        <a class="link" href="BURAYA_INSTAGRAM_ANA_LINK" target="_blank">
+        <a class="link"
+           href="https://www.instagram.com/oyundunyasi.tr1?stkn=ZWF2eDB5bDJ5bHpp"
+           target="_blank"
+           rel="noopener">
             <span>👤 <span data-i18n="mainAccount">Ana Hesap</span></span>
             <span class="arrow">↗</span>
         </a>
 
-        <a class="link" href="BURAYA_INSTAGRAM_SCRIPT_LINK" target="_blank">
+        <a class="link"
+           href="BURAYA_INSTAGRAM_SCRIPT_LINK"
+           target="_blank"
+           rel="noopener">
             <span>📜 <span data-i18n="scriptAccount">Script Hesabı</span></span>
             <span class="arrow">↗</span>
         </a>
@@ -399,8 +490,11 @@ function setLanguage(lang){
     document.getElementById("description").textContent =
         translations[lang].description;
 
-    document.getElementById("trBtn").classList.toggle("active",lang==="tr");
-    document.getElementById("enBtn").classList.toggle("active",lang==="en");
+    document.getElementById("trBtn")
+        .classList.toggle("active",lang==="tr");
+
+    document.getElementById("enBtn")
+        .classList.toggle("active",lang==="en");
 
     localStorage.setItem("language",lang);
 }
@@ -412,4 +506,4 @@ setLanguage(savedLanguage);
 </script>
 
 </body>
-</html>
+            </html>
