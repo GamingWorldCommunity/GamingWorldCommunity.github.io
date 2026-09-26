@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" translate="no">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WORLD_GAMEHUB Nedir?</title>
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="google"
+      content="notranslate">
+
+<title id="pageTitle">
+    WORLD_GAMEHUB Nedir?
+</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -16,207 +26,703 @@ body{
     font-family:Arial,Helvetica,sans-serif;
     min-height:100vh;
     color:#fff;
+
     background:
-        radial-gradient(circle at 20% 20%,rgba(130,0,255,.22),transparent 30%),
-        radial-gradient(circle at 80% 80%,rgba(0,150,255,.18),transparent 30%),
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(130,0,255,.22),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(0,150,255,.18),
+            transparent 30%
+        ),
+
         #050510;
 }
 
 body::before{
+
     content:"";
+
     position:fixed;
+
     inset:0;
+
     background:
-        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
     background-size:40px 40px;
+
     pointer-events:none;
 }
 
 .container{
+
     width:100%;
+
     max-width:760px;
+
     margin:auto;
+
     padding:25px 16px 50px;
+
     position:relative;
+
     z-index:1;
 }
 
+.lang-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-bottom:25px;
+}
+
+.lang-buttons button{
+
+    border:
+        1px solid
+        rgba(180,80,255,.5);
+
+    background:
+        rgba(20,20,40,.8);
+
+    color:#fff;
+
+    padding:10px 17px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    transition:.25s;
+}
+
+.lang-buttons button:hover,
+.lang-buttons button.active{
+
+    background:
+        rgba(130,0,255,.3);
+
+    box-shadow:
+        0 0 18px
+        rgba(150,0,255,.45);
+}
+
 .top{
+
     text-align:center;
+
     margin-bottom:20px;
 }
 
 .top h1{
-    font-size:clamp(28px,7vw,45px);
+
+    font-size:
+        clamp(28px,7vw,45px);
+
     font-weight:900;
+
     text-shadow:
         0 0 10px #9d00ff,
         0 0 25px #6c00ff;
 }
 
 .top p{
+
     color:#aaa;
+
     margin-top:10px;
 }
 
 .card{
+
     margin-top:18px;
+
     padding:22px;
+
     border-radius:20px;
-    background:rgba(13,13,28,.88);
-    border:1px solid rgba(150,70,255,.3);
+
+    background:
+        rgba(13,13,28,.88);
+
+    border:
+        1px solid
+        rgba(150,70,255,.3);
+
     box-shadow:
-        0 0 25px rgba(100,0,255,.08),
-        inset 0 0 20px rgba(120,0,255,.025);
+        0 0 25px
+        rgba(100,0,255,.08),
+
+        inset 0 0 20px
+        rgba(120,0,255,.025);
+
     backdrop-filter:blur(10px);
 }
 
 .card h2{
+
     font-size:21px;
+
     margin-bottom:13px;
 }
 
 .card p{
+
     color:#c7c7c7;
+
     line-height:1.7;
+
     font-size:15px;
 }
 
 .card ul{
+
     margin-top:12px;
+
     padding-left:22px;
+
     color:#c7c7c7;
+
     line-height:1.9;
 }
 
 .contact{
+
     margin-top:18px;
 }
 
 .contact a{
+
     display:block;
+
     text-decoration:none;
+
     color:#fff;
-    background:rgba(255,255,255,.045);
-    border:1px solid rgba(255,255,255,.07);
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
     padding:14px;
+
     border-radius:12px;
+
     margin-top:10px;
+
     transition:.2s;
 }
 
 .contact a:hover{
-    background:rgba(130,0,255,.18);
-    border-color:rgba(170,80,255,.5);
-    transform:translateY(-2px);
+
+    background:
+        rgba(130,0,255,.18);
+
+    border-color:
+        rgba(170,80,255,.5);
+
+    transform:
+        translateY(-2px);
 }
 
 .back{
+
     display:block;
+
     width:max-content;
+
     margin:22px auto 0;
+
     padding:12px 20px;
+
     border-radius:12px;
+
     text-decoration:none;
+
     color:#fff;
-    background:rgba(130,0,255,.2);
-    border:1px solid rgba(170,80,255,.45);
+
+    background:
+        rgba(130,0,255,.2);
+
+    border:
+        1px solid
+        rgba(170,80,255,.45);
 }
 
 footer{
+
     text-align:center;
+
     margin-top:30px;
+
     color:#777;
+
     font-size:13px;
 }
+
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
+    <!-- LANGUAGE -->
+
+    <div class="lang-buttons">
+
+        <button
+            id="trBtn"
+            onclick="setLanguage('tr')">
+
+            🇹🇷 Türkçe
+
+        </button>
+
+        <button
+            id="enBtn"
+            onclick="setLanguage('en')">
+
+            🇬🇧 English
+
+        </button>
+
+    </div>
+
+
+    <!-- HEADER -->
+
     <div class="top">
-        <h1>WORLD_GAMEHUB</h1>
-        <p>Gaming • Scripts • Community</p>
-    </div>
 
-    <div class="card">
-        <h2>🎮 WORLD_GAMEHUB Nedir?</h2>
+        <h1>
+            WORLD_GAMEHUB
+        </h1>
 
-        <p>
-            WORLD_GAMEHUB, oyuncular için güncel scriptler,
-            oyun içerikleri ve topluluk bağlantıları sunan bir
-            oyun platformudur.
+        <p id="subtitle">
+            Gaming • Scripts • Community
         </p>
 
-        <p style="margin-top:12px;">
-            Özellikle Roblox ve Car Parking 1 & 2 gibi popüler
-            oyunlarda güncel script içerikleri paylaşmayı
-            hedefliyoruz.
-        </p>
     </div>
 
+
+    <!-- ABOUT -->
+
     <div class="card">
-        <h2>🔥 Neler Sunuyoruz?</h2>
+
+        <h2 id="aboutTitle">
+            🎮 WORLD_GAMEHUB Nedir?
+        </h2>
+
+        <p id="aboutText1">
+            WORLD_GAMEHUB, oyuncular için güncel
+            scriptler, oyun içerikleri ve topluluk
+            bağlantıları sunan bir oyun platformudur.
+        </p>
+
+        <p id="aboutText2"
+           style="margin-top:12px;">
+
+            Özellikle Roblox ve Car Parking 1 & 2
+            gibi popüler oyunlarda güncel script
+            içerikleri paylaşmayı hedefliyoruz.
+
+        </p>
+
+    </div>
+
+
+    <!-- SERVICES -->
+
+    <div class="card">
+
+        <h2 id="servicesTitle">
+            🔥 Neler Sunuyoruz?
+        </h2>
 
         <ul>
-            <li>Roblox için en güncel scriptler</li>
-            <li>Popüler Roblox oyunları için scriptler</li>
-            <li>İstediğiniz Roblox oyunları için script içerikleri</li>
-            <li>Car Parking 1 & 2 için scriptler</li>
-            <li>Yeni oyunlar ve güncellemeler</li>
-            <li>Oyun toplulukları ve takas grupları</li>
+
+            <li id="service1">
+                Roblox için en güncel scriptler
+            </li>
+
+            <li id="service2">
+                Popüler Roblox oyunları için scriptler
+            </li>
+
+            <li id="service3">
+                İstediğiniz Roblox oyunları için
+                script içerikleri
+            </li>
+
+            <li id="service4">
+                Car Parking 1 & 2 için scriptler
+            </li>
+
+            <li id="service5">
+                Yeni oyunlar ve güncellemeler
+            </li>
+
+            <li id="service6">
+                Oyun toplulukları ve takas grupları
+            </li>
+
         </ul>
+
     </div>
 
-    <div class="card">
-        <h2>💡 İstediğiniz Oyun</h2>
 
-        <p>
-            Aradığınız oyun listemizde yoksa bize ulaşabilirsiniz.
-            Oynamak istediğiniz veya script istediğiniz oyunu
-            belirtebilirsiniz. Uygun olduğunda istediğiniz oyun
-            için içerik ve script paylaşımı yapılabilir.
+    <!-- REQUEST -->
+
+    <div class="card">
+
+        <h2 id="requestTitle">
+            💡 İstediğiniz Oyun
+        </h2>
+
+        <p id="requestText">
+
+            Aradığınız oyun listemizde yoksa bize
+            ulaşabilirsiniz. Oynamak istediğiniz veya
+            script istediğiniz oyunu belirtebilirsiniz.
+            Uygun olduğunda istediğiniz oyun için
+            içerik ve script paylaşımı yapılabilir.
+
         </p>
+
     </div>
 
-    <div class="card">
-        <h2>📩 İletişim</h2>
 
-        <p>
-            Herhangi bir soru, öneri veya script isteğiniz varsa
-            TikTok veya Instagram hesabımız üzerinden bize
-            ulaşabilirsiniz.
+    <!-- CONTACT -->
+
+    <div class="card">
+
+        <h2 id="contactTitle">
+            📩 İletişim
+        </h2>
+
+        <p id="contactText">
+
+            Herhangi bir soru, öneri veya script
+            isteğiniz varsa TikTok veya Instagram
+            hesabımız üzerinden bize ulaşabilirsiniz.
+
         </p>
+
 
         <div class="contact">
 
-            <a href="https://www.tiktok.com/@oyundunyasi.tr"
-               target="_blank"
-               rel="noopener">
+            <a
+                href="https://www.tiktok.com/@oyundunyasi.tr"
+                target="_blank"
+                rel="noopener">
+
                 🎵 TikTok — @oyundunyasi.tr
+
             </a>
 
-            <a href="https://www.instagram.com/oyundunyasi.tr1?stkn=ZWF2eDB5bDJ5bHpp"
-               target="_blank"
-               rel="noopener">
+
+            <a
+                href="https://www.instagram.com/oyundunyasi.tr1?stkn=ZWF2eDB5bDJ5bHpp"
+                target="_blank"
+                rel="noopener">
+
                 📸 Instagram — @oyundunyasi.tr1
+
             </a>
 
         </div>
+
     </div>
 
-    <a class="back" href="index.html">
+
+    <!-- BACK -->
+
+    <a
+        class="back"
+        href="index.html"
+        id="backButton">
+
         ← Ana Sayfaya Dön
+
     </a>
 
+
     <footer>
+
         WORLD_GAMEHUB © 2026
+
     </footer>
 
 </div>
+
+
+<script>
+
+const aboutTranslations = {
+
+    tr:{
+
+        pageTitle:
+        "WORLD_GAMEHUB Nedir?",
+
+        subtitle:
+        "Gaming • Scripts • Community",
+
+        aboutTitle:
+        "🎮 WORLD_GAMEHUB Nedir?",
+
+        aboutText1:
+        "WORLD_GAMEHUB, oyuncular için güncel scriptler, oyun içerikleri ve topluluk bağlantıları sunan bir oyun platformudur.",
+
+        aboutText2:
+        "Özellikle Roblox ve Car Parking 1 & 2 gibi popüler oyunlarda güncel script içerikleri paylaşmayı hedefliyoruz.",
+
+        servicesTitle:
+        "🔥 Neler Sunuyoruz?",
+
+        service1:
+        "Roblox için en güncel scriptler",
+
+        service2:
+        "Popüler Roblox oyunları için scriptler",
+
+        service3:
+        "İstediğiniz Roblox oyunları için script içerikleri",
+
+        service4:
+        "Car Parking 1 & 2 için scriptler",
+
+        service5:
+        "Yeni oyunlar ve güncellemeler",
+
+        service6:
+        "Oyun toplulukları ve takas grupları",
+
+        requestTitle:
+        "💡 İstediğiniz Oyun",
+
+        requestText:
+        "Aradığınız oyun listemizde yoksa bize ulaşabilirsiniz. Oynamak istediğiniz veya script istediğiniz oyunu belirtebilirsiniz. Uygun olduğunda istediğiniz oyun için içerik ve script paylaşımı yapılabilir.",
+
+        contactTitle:
+        "📩 İletişim",
+
+        contactText:
+        "Herhangi bir soru, öneri veya script isteğiniz varsa TikTok veya Instagram hesabımız üzerinden bize ulaşabilirsiniz.",
+
+        backButton:
+        "← Ana Sayfaya Dön"
+
+    },
+
+    en:{
+
+        pageTitle:
+        "What is WORLD_GAMEHUB?",
+
+        subtitle:
+        "Gaming • Scripts • Community",
+
+        aboutTitle:
+        "🎮 What is WORLD_GAMEHUB?",
+
+        aboutText1:
+        "WORLD_GAMEHUB is a gaming platform that provides players with up-to-date scripts, gaming content and community links.",
+
+        aboutText2:
+        "We especially aim to share updated script content for popular games such as Roblox and Car Parking 1 & 2.",
+
+        servicesTitle:
+        "🔥 What Do We Offer?",
+
+        service1:
+        "The latest scripts for Roblox",
+
+        service2:
+        "Scripts for popular Roblox games",
+
+        service3:
+        "Script content for Roblox games you request",
+
+        service4:
+        "Scripts for Car Parking 1 & 2",
+
+        service5:
+        "New games and updates",
+
+        service6:
+        "Gaming communities and trading groups",
+
+        requestTitle:
+        "💡 Request a Game",
+
+        requestText:
+        "If the game you are looking for is not on our list, you can contact us. You can tell us which game you want to play or which game you want scripts for. When possible, we can provide content and scripts for the game you request.",
+
+        contactTitle:
+        "📩 Contact",
+
+        contactText:
+        "If you have any questions, suggestions or script requests, you can contact us through our TikTok or Instagram account.",
+
+        backButton:
+        "← Back to Home"
+
+    }
+
+};
+
+
+function setLanguage(lang){
+
+    if(!aboutTranslations[lang]){
+        lang = "tr";
+    }
+
+
+    document.documentElement.lang = lang;
+
+
+    const t =
+    aboutTranslations[lang];
+
+
+    document.title =
+    t.pageTitle;
+
+
+    document.getElementById("subtitle")
+    .textContent =
+    t.subtitle;
+
+
+    document.getElementById("aboutTitle")
+    .textContent =
+    t.aboutTitle;
+
+
+    document.getElementById("aboutText1")
+    .textContent =
+    t.aboutText1;
+
+
+    document.getElementById("aboutText2")
+    .textContent =
+    t.aboutText2;
+
+
+    document.getElementById("servicesTitle")
+    .textContent =
+    t.servicesTitle;
+
+
+    document.getElementById("service1")
+    .textContent =
+    t.service1;
+
+
+    document.getElementById("service2")
+    .textContent =
+    t.service2;
+
+
+    document.getElementById("service3")
+    .textContent =
+    t.service3;
+
+
+    document.getElementById("service4")
+    .textContent =
+    t.service4;
+
+
+    document.getElementById("service5")
+    .textContent =
+    t.service5;
+
+
+    document.getElementById("service6")
+    .textContent =
+    t.service6;
+
+
+    document.getElementById("requestTitle")
+    .textContent =
+    t.requestTitle;
+
+
+    document.getElementById("requestText")
+    .textContent =
+    t.requestText;
+
+
+    document.getElementById("contactTitle")
+    .textContent =
+    t.contactTitle;
+
+
+    document.getElementById("contactText")
+    .textContent =
+    t.contactText;
+
+
+    document.getElementById("backButton")
+    .textContent =
+    t.backButton;
+
+
+    document.getElementById("trBtn")
+    .classList
+    .toggle("active",lang === "tr");
+
+
+    document.getElementById("enBtn")
+    .classList
+    .toggle("active",lang === "en");
+
+
+    /*
+       Dili hem ana sayfa hem hakkında sayfası
+       için aynı localStorage alanında saklıyoruz.
+    */
+
+    localStorage.setItem(
+        "language",
+        lang
+    );
+
+}
+
+
+const savedLanguage =
+localStorage.getItem("language") || "tr";
+
+
+setLanguage(savedLanguage);
+
+</script>
 
 </body>
 </html>
