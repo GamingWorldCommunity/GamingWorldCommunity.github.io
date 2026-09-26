@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gaming World Community</title>
+<title>WORLD_GAMEHUB</title>
 
 <style>
 *{
@@ -60,7 +60,6 @@ body::before{
     cursor:pointer;
     font-size:14px;
     transition:.25s;
-    -webkit-tap-highlight-color:transparent;
 }
 
 .lang-buttons button:hover,
@@ -87,6 +86,25 @@ body::before{
     margin-top:10px;
     color:#aaa;
     font-size:15px;
+}
+
+.about-button{
+    display:block;
+    width:max-content;
+    margin:18px auto 5px;
+    padding:12px 20px;
+    border-radius:13px;
+    text-decoration:none;
+    color:#fff;
+    background:rgba(130,0,255,.16);
+    border:1px solid rgba(170,80,255,.45);
+    transition:.2s;
+}
+
+.about-button:hover{
+    transform:translateY(-2px);
+    background:rgba(130,0,255,.28);
+    box-shadow:0 0 20px rgba(140,0,255,.3);
 }
 
 .card{
@@ -136,7 +154,6 @@ body::before{
     border-radius:12px;
     margin-top:9px;
     transition:.18s;
-    -webkit-tap-highlight-color:transparent;
     user-select:none;
 }
 
@@ -150,7 +167,6 @@ body::before{
 .link:active{
     transform:scale(.97);
     background:rgba(140,40,255,.25);
-    box-shadow:0 0 24px rgba(160,40,255,.45);
 }
 
 .link span:first-child{
@@ -218,10 +234,14 @@ footer{
     </div>
 
     <div class="logo">
-        <h1>Gaming World Community</h1>
+        <h1>WORLD_GAMEHUB</h1>
         <p id="description">
-            Tüm sosyal medya ve topluluk bağlantılarımız
+            Oyunlar, scriptler ve topluluk bağlantılarımız
         </p>
+
+        <a class="about-button" href="about.html">
+            ℹ️ <span id="aboutButton">WORLD_GAMEHUB Nedir?</span>
+        </a>
     </div>
 
     <!-- TIKTOK -->
@@ -240,14 +260,6 @@ footer{
             <span>👤 <span data-i18n="mainAccount">Ana Hesap</span></span>
             <span class="arrow">↗</span>
         </a>
-
-        <a class="link"
-           href="BURAYA_TIKTOK_SCRIPT_LINK"
-           target="_blank"
-           rel="noopener">
-            <span>📜 <span data-i18n="scriptAccount">Script Hesabı</span></span>
-            <span class="arrow">↗</span>
-        </a>
     </div>
 
     <!-- YOUTUBE -->
@@ -264,14 +276,6 @@ footer{
            target="_blank"
            rel="noopener">
             <span>📺 <span data-i18n="mainChannel">Ana Kanal</span></span>
-            <span class="arrow">↗</span>
-        </a>
-
-        <a class="link"
-           href="BURAYA_YOUTUBE_SCRIPT_LINK"
-           target="_blank"
-           rel="noopener">
-            <span>📜 <span data-i18n="scriptChannel">Script Kanalı</span></span>
             <span class="arrow">↗</span>
         </a>
     </div>
@@ -363,16 +367,14 @@ footer{
         </div>
 
         <a class="link single-link"
-           href="https://discord.gg/ATnHqyeJvt"
+           href="https://discord.gg/tsugqtvQtm"
            target="_blank"
            rel="noopener">
             <span>
                 <img class="platform-icon sub-icon"
                      src="https://cdn.simpleicons.org/discord/ffffff"
                      alt="Discord">
-                <span data-i18n="gamingWorldCommunity">
-                    Gaming World Community
-                </span>
+                <span>WORLD_GAMEHUB</span>
             </span>
             <span class="arrow">↗</span>
         </a>
@@ -394,18 +396,10 @@ footer{
             <span>👤 <span data-i18n="mainAccount">Ana Hesap</span></span>
             <span class="arrow">↗</span>
         </a>
-
-        <a class="link"
-           href="BURAYA_INSTAGRAM_SCRIPT_LINK"
-           target="_blank"
-           rel="noopener">
-            <span>📜 <span data-i18n="scriptAccount">Script Hesabı</span></span>
-            <span class="arrow">↗</span>
-        </a>
     </div>
 
-    <footer id="footerText">
-        Gaming World Community © 2026
+    <footer>
+        WORLD_GAMEHUB © 2026
     </footer>
 
 </div>
@@ -415,7 +409,8 @@ footer{
 const translations = {
 
     tr:{
-        description:"Tüm sosyal medya ve topluluk bağlantılarımız",
+        description:"Oyunlar, scriptler ve topluluk bağlantılarımız",
+        aboutButton:"WORLD_GAMEHUB Nedir?",
 
         tiktok:"TikTok",
         youtube:"YouTube",
@@ -424,10 +419,7 @@ const translations = {
         instagram:"Instagram",
 
         mainAccount:"Ana Hesap",
-        scriptAccount:"Script Hesabı",
-
         mainChannel:"Ana Kanal",
-        scriptChannel:"Script Kanalı",
 
         roblox:"Roblox",
         carParking:"Car Parking",
@@ -439,13 +431,12 @@ const translations = {
         carChat:"Car Parking Sohbet & Takas Grubu",
 
         robloxGroupTitle:"Roblox Group",
-        robloxGroup:"Roblox Grubu",
-
-        gamingWorldCommunity:"Gaming World Community"
+        robloxGroup:"Roblox Grubu"
     },
 
     en:{
-        description:"All of our social media and community links",
+        description:"Our gaming, script and community links",
+        aboutButton:"What is WORLD_GAMEHUB?",
 
         tiktok:"TikTok",
         youtube:"YouTube",
@@ -454,10 +445,7 @@ const translations = {
         instagram:"Instagram",
 
         mainAccount:"Main Account",
-        scriptAccount:"Script Account",
-
         mainChannel:"Main Channel",
-        scriptChannel:"Script Channel",
 
         roblox:"Roblox",
         carParking:"Car Parking",
@@ -469,9 +457,7 @@ const translations = {
         carChat:"Car Parking Chat & Trading Group",
 
         robloxGroupTitle:"Roblox Group",
-        robloxGroup:"Roblox Group",
-
-        gamingWorldCommunity:"Gaming World Community"
+        robloxGroup:"Roblox Group"
     }
 };
 
@@ -490,6 +476,9 @@ function setLanguage(lang){
     document.getElementById("description").textContent =
         translations[lang].description;
 
+    document.getElementById("aboutButton").textContent =
+        translations[lang].aboutButton;
+
     document.getElementById("trBtn")
         .classList.toggle("active",lang==="tr");
 
@@ -506,4 +495,4 @@ setLanguage(savedLanguage);
 </script>
 
 </body>
-            </html>
+</html>
