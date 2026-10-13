@@ -1,0 +1,52 @@
+{
+  "settings": {
+    "title": "WORLD_GAMEHUB",
+    "tagline": {
+      "tr": "Gaming • Scripts • Community",
+      "en": "Gaming • Scripts • Community"
+    },
+    "about": {
+      "tr": "WORLD_GAMEHUB, oyuncular için güncel scriptler, oyun içerikleri ve topluluk bağlantıları sunan bir oyun platformudur.\n\nÖzellikle Roblox ve Car Parking 1 & 2 gibi popüler oyunlarda güncel script içerikleri paylaşmayı hedefliyoruz.\n\nNeler sunuyoruz?\n• Roblox için en güncel scriptler\n• Popüler Roblox oyunları için scriptler\n• İstediğiniz Roblox oyunları için script içerikleri\n• Car Parking 1 & 2 için scriptler\n• Yeni oyunlar ve güncellemeler\n• Oyun toplulukları ve takas grupları\n\nİstediğiniz oyun listemizde yoksa TikTok veya Instagram hesabımızdan bize ulaşabilir, oynamak veya script istediğiniz oyunu belirtebilirsiniz.",
+      "en": "WORLD_GAMEHUB is a gaming platform that offers up-to-date scripts, game content and community links for players.\n\nWe focus on sharing fresh script content for popular games such as Roblox and Car Parking 1 & 2.\n\nWhat do we offer?\n• The latest scripts for Roblox\n• Scripts for popular Roblox games\n• Script content for the Roblox games you request\n• Scripts for Car Parking 1 & 2\n• New games and updates\n• Gaming communities and trade groups\n\nIf the game you are looking for is not on our list, contact us on TikTok or Instagram and tell us which game you want."
+    }
+  },
+  "tasks": [
+    {
+      "id": "x4drzum",
+      "kind": "follow",
+      "title": {
+        "tr": "Car parking script videosu",
+        "en": "Car parking script videos"
+      },
+      "desc": {
+        "tr": "Bu bir örnek tir puanlık gerçek değildir.",
+        "en": ""
+      },
+      "url": "tiktok.com/@oyundunyasi.tr",
+      "video": "https://vt.tiktok.com/ZSg1Mvvyo/"
+    }
+  ],
+  "links": [],
+  "listings": [],
+  "socials": [
+    {
+      "id": "s1",
+      "label": "Güvence",
+      "url": "https://t.me/world_gamehubproof",
+      "icon": "🛡️",
+      "hl": true
+    },
+    {
+      "id": "s2",
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/@oyundunyasi.tr",
+      "icon": "🎵"
+    },
+    {
+      "id": "s3",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/oyundunyasi.tr1",
+      "icon": "📸"
+    }
+  ]
+}
