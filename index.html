@@ -1,657 +1,275 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" translate="no">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>WORLD_GAMEHUB | Gaming Community</title>
-
-<meta name="description" content="WORLD_GAMEHUB - Roblox, Car Parking ve popüler oyunlar için topluluk, güncellemeler ve bağlantılar.">
-<meta name="theme-color" content="#080812">
+<meta name="google" content="notranslate">
+<meta name="theme-color" content="#050510">
+<title>WORLD_GAMEHUB</title>
+<meta name="description" content="WORLD_GAMEHUB: Roblox ve Car Parking scriptleri, topluluk grupları, güvence kanalı ve tüm sosyal medya bağlantılarımız.">
 <meta property="og:title" content="WORLD_GAMEHUB">
-<meta property="og:description" content="Gaming community, oyunlar, güncellemeler ve topluluk bağlantıları.">
+<meta property="og:description" content="Oyunlar, scriptler ve topluluk bağlantılarımız">
 <meta property="og:type" content="website">
-
-<link rel="icon" href="https://cdn.simpleicons.org/gamepad/ffffff">
+<meta property="og:url" content="https://gamingworldcommunity.github.io/index.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23140a2e'/%3E%3Ctext x='32' y='43' font-size='34' text-anchor='middle'%3E🎮%3C/text%3E%3C/svg%3E">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+:root{
+    --bg:#050510;
+    --card:rgba(14,14,30,.86);
+    --line:rgba(255,255,255,.08);
+    --purple:#9d3dff;
+    --green:#22d37a;
+    --text:#fff;
+    --muted:#a9a9c0;
 }
 
-html{
-    scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
     min-height:100vh;
-    color:#fff;
+    color:var(--text);
     background:
-        radial-gradient(circle at 15% 15%,rgba(130,0,255,.20),transparent 28%),
-        radial-gradient(circle at 85% 75%,rgba(0,140,255,.16),transparent 28%),
-        #050510;
+        radial-gradient(circle at 15% 10%,rgba(130,0,255,.25),transparent 35%),
+        radial-gradient(circle at 85% 90%,rgba(0,150,255,.2),transparent 35%),
+        var(--bg);
+    background-attachment:fixed;
     overflow-x:hidden;
-    transition:.3s;
-}
-
-body.light{
-    color:#15151f;
-    background:
-        radial-gradient(circle at 15% 15%,rgba(130,0,255,.12),transparent 28%),
-        radial-gradient(circle at 85% 75%,rgba(0,140,255,.10),transparent 28%),
-        #f4f4fa;
 }
 
 body::before{
     content:"";
-    position:fixed;
-    inset:0;
+    position:fixed;inset:0;
     background:
-        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+        linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
     background-size:40px 40px;
     pointer-events:none;
-    z-index:0;
 }
 
 .container{
-    width:100%;
-    max-width:1100px;
-    margin:auto;
-    padding:18px 16px 60px;
-    position:relative;
-    z-index:1;
+    position:relative;z-index:1;
+    width:100%;max-width:680px;margin:auto;
+    padding:20px 16px 60px;
 }
 
-/* HEADER */
-
-header{
-    position:sticky;
-    top:10px;
-    z-index:50;
-    margin-bottom:28px;
+/* TOP BAR */
+.topbar{
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+    margin-bottom:22px;
 }
 
-.navbar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-    padding:13px 16px;
-    border:1px solid rgba(170,80,255,.28);
-    background:rgba(10,10,25,.84);
-    backdrop-filter:blur(16px);
-    border-radius:18px;
-    box-shadow:0 10px 35px rgba(0,0,0,.25);
+.lang-buttons{display:flex;gap:6px;padding:4px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.lang-buttons button{
+    border:0;background:transparent;color:var(--muted);
+    padding:8px 14px;border-radius:10px;cursor:pointer;
+    font-size:13px;font-family:inherit;transition:.2s;
 }
+.lang-buttons button.active{background:rgba(140,40,255,.4);color:#fff;box-shadow:0 0 14px rgba(150,0,255,.4)}
 
-body.light .navbar{
-    background:rgba(255,255,255,.84);
+.share-btn{
+    border:1px solid var(--line);background:rgba(255,255,255,.05);color:#fff;
+    padding:9px 14px;border-radius:12px;cursor:pointer;font-size:13px;font-family:inherit;transition:.2s;
 }
-
-.brand{
-    font-weight:900;
-    font-size:19px;
-    letter-spacing:.5px;
-    text-decoration:none;
-    color:#fff;
-    text-shadow:0 0 12px #8b00ff;
-}
-
-body.light .brand{
-    color:#161622;
-}
-
-.nav-links{
-    display:flex;
-    gap:6px;
-    flex-wrap:wrap;
-    justify-content:center;
-}
-
-.nav-links button,
-.header-actions button{
-    border:1px solid rgba(180,80,255,.28);
-    background:rgba(255,255,255,.045);
-    color:#fff;
-    padding:9px 12px;
-    border-radius:11px;
-    cursor:pointer;
-    transition:.2s;
-}
-
-body.light .nav-links button,
-body.light .header-actions button{
-    color:#222;
-    background:rgba(0,0,0,.04);
-}
-
-.nav-links button:hover,
-.header-actions button:hover{
-    background:rgba(130,0,255,.20);
-    border-color:rgba(180,80,255,.65);
-    transform:translateY(-1px);
-}
-
-.header-actions{
-    display:flex;
-    gap:7px;
-}
-
-.menu-btn{
-    display:none;
-}
+.share-btn:hover{background:rgba(140,40,255,.25)}
 
 /* HERO */
-
-.hero{
-    text-align:center;
-    padding:55px 15px 35px;
+.logo{text-align:center;margin-bottom:6px}
+.logo-badge{
+    width:74px;height:74px;margin:0 auto 14px;border-radius:22px;
+    display:flex;align-items:center;justify-content:center;font-size:36px;
+    background:linear-gradient(135deg,rgba(140,40,255,.5),rgba(0,140,255,.35));
+    border:1px solid rgba(190,110,255,.55);
+    box-shadow:0 0 30px rgba(140,40,255,.4);
+    animation:float 4s ease-in-out infinite;
 }
+@keyframes float{50%{transform:translateY(-6px)}}
 
-.hero-badge{
-    display:inline-flex;
-    align-items:center;
-    gap:7px;
-    padding:8px 13px;
-    border:1px solid rgba(180,80,255,.35);
-    background:rgba(130,0,255,.10);
-    border-radius:999px;
-    font-size:13px;
-    color:#dcbcff;
-    margin-bottom:17px;
+.logo h1{
+    font-size:clamp(28px,8vw,46px);font-weight:900;letter-spacing:1px;
+    background:linear-gradient(90deg,#fff,#d9b3ff 50%,#8fd0ff);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 0 14px rgba(150,50,255,.5));
 }
+.logo p{margin-top:8px;color:var(--muted);font-size:15px}
 
-.hero h1{
-    font-size:clamp(34px,8vw,66px);
-    line-height:1;
-    font-weight:950;
-    letter-spacing:-1px;
-    text-shadow:
-        0 0 12px #a000ff,
-        0 0 35px rgba(100,0,255,.65);
+/* ACTION BUTTONS */
+.top-buttons{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 14px;
 }
-
-.hero p{
-    max-width:720px;
-    margin:20px auto 0;
-    color:#aaa;
-    font-size:16px;
-    line-height:1.7;
+.action{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+    min-height:76px;padding:10px 6px;border-radius:16px;
+    text-decoration:none;color:#fff;font-family:inherit;font-size:13px;font-weight:600;text-align:center;line-height:1.25;
+    background:rgba(140,40,255,.16);border:1px solid rgba(175,90,255,.5);
+    cursor:pointer;transition:.2s;
 }
-
-body.light .hero p{
-    color:#555;
+.action .ico{font-size:22px}
+.action:hover{transform:translateY(-3px);background:rgba(140,40,255,.3);box-shadow:0 0 22px rgba(140,0,255,.35)}
+.action:active{transform:scale(.96)}
+.action.proof{
+    background:rgba(34,211,122,.14);border-color:rgba(34,211,122,.6);
+    box-shadow:0 0 14px rgba(34,211,122,.15);
 }
+.action.proof:hover{background:rgba(34,211,122,.26);box-shadow:0 0 24px rgba(34,211,122,.4)}
 
-.hero-buttons{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:25px;
+/* QUICK NAV */
+.quick-nav{
+    display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;margin-bottom:4px;
+    scrollbar-width:none;
 }
-
-.btn{
-    border:1px solid rgba(180,80,255,.5);
-    background:linear-gradient(135deg,rgba(130,0,255,.35),rgba(50,50,150,.25));
-    color:#fff;
-    padding:12px 18px;
-    border-radius:13px;
-    text-decoration:none;
-    cursor:pointer;
-    transition:.22s;
-    font-weight:700;
+.quick-nav::-webkit-scrollbar{display:none}
+.chip{
+    flex:none;display:flex;align-items:center;gap:7px;
+    padding:9px 14px;border-radius:999px;text-decoration:none;color:#fff;font-size:13px;
+    background:rgba(255,255,255,.05);border:1px solid var(--line);transition:.2s;
 }
+.chip:hover{background:rgba(140,40,255,.22);border-color:rgba(175,90,255,.5)}
+.chip img{width:16px;height:16px}
 
-.btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 28px rgba(130,0,255,.20);
-}
-
-/* SECTIONS */
-
-.page{
-    display:none;
-    animation:pageIn .35s ease;
-}
-
-.page.active{
-    display:block;
-}
-
-@keyframes pageIn{
-    from{
-        opacity:0;
-        transform:translateY(8px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.section-title{
-    margin:10px 0 18px;
-}
-
-.section-title h2{
-    font-size:28px;
-}
-
-.section-title p{
-    color:#888;
-    margin-top:7px;
-    line-height:1.5;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
-
+/* CARDS */
 .card{
-    padding:20px;
-    border-radius:19px;
-    background:rgba(13,13,28,.86);
-    border:1px solid rgba(150,70,255,.24);
-    box-shadow:
-        0 0 25px rgba(100,0,255,.06),
-        inset 0 0 20px rgba(120,0,255,.02);
+    --c:#9d3dff;
+    margin-top:16px;padding:18px;border-radius:22px;
+    background:var(--card);border:1px solid var(--line);
+    border-top:2px solid var(--c);
+    box-shadow:0 8px 30px rgba(0,0,0,.35),0 0 24px color-mix(in srgb,var(--c) 14%,transparent);
     backdrop-filter:blur(10px);
-    transition:.22s;
+    scroll-margin-top:14px;
+    opacity:0;transform:translateY(14px);
+    animation:rise .5s ease forwards;
 }
+@keyframes rise{to{opacity:1;transform:none}}
 
-body.light .card{
-    background:rgba(255,255,255,.80);
-    color:#171722;
-    border-color:rgba(100,60,180,.18);
+.card-title{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:800;margin-bottom:12px}
+.icon-box{
+    width:40px;height:40px;border-radius:12px;flex:none;
+    display:flex;align-items:center;justify-content:center;font-size:20px;
+    background:color-mix(in srgb,var(--c) 22%,transparent);
+    border:1px solid color-mix(in srgb,var(--c) 55%,transparent);
 }
+.icon-box img{width:22px;height:22px}
 
-.card:hover{
-    transform:translateY(-4px);
-    border-color:rgba(170,80,255,.55);
-    box-shadow:0 12px 35px rgba(100,0,255,.12);
+.subcategory{
+    margin-top:12px;padding:13px;border-radius:16px;
+    background:rgba(255,255,255,.03);border:1px solid var(--line);
 }
+.subcategory h3{display:flex;align-items:center;gap:8px;font-size:15px;color:#eee;margin-bottom:2px}
+.subcategory h3 img{width:18px;height:18px}
+.subhint{color:var(--muted);font-size:12.5px;margin:2px 0 4px;line-height:1.5}
 
-.card-icon{
-    font-size:30px;
-    margin-bottom:12px;
+.link{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    min-height:52px;margin-top:9px;padding:12px 15px;border-radius:14px;
+    text-decoration:none;color:#fff;
+    background:rgba(255,255,255,.05);border:1px solid var(--line);
+    transition:.18s;user-select:none;
 }
+.link .l-left{display:flex;align-items:center;gap:10px;font-size:14.5px;min-width:0}
+.link .l-left span{overflow-wrap:anywhere}
+.link .emoji{font-size:18px;flex:none}
+.link .arrow{color:var(--muted);flex:none;transition:.18s}
+.link:hover{transform:translateY(-2px);background:rgba(140,40,255,.15);border-color:rgba(175,90,255,.55);box-shadow:0 0 18px rgba(140,0,255,.22)}
+.link:hover .arrow{color:#fff;transform:translate(2px,-2px)}
+.link:active{transform:scale(.97)}
 
-.card h3{
-    font-size:19px;
-    margin-bottom:8px;
+.link.proof{background:rgba(34,211,122,.1);border-color:rgba(34,211,122,.45)}
+.link.proof:hover{background:rgba(34,211,122,.2);border-color:rgba(34,211,122,.8);box-shadow:0 0 20px rgba(34,211,122,.3)}
+
+footer{text-align:center;margin-top:34px;color:#777;font-size:13px}
+
+/* BACK TO TOP */
+.to-top{
+    position:fixed;right:16px;bottom:18px;z-index:50;
+    width:46px;height:46px;border-radius:14px;border:1px solid rgba(175,90,255,.6);
+    background:rgba(20,10,45,.9);color:#fff;font-size:20px;cursor:pointer;
+    opacity:0;pointer-events:none;transform:translateY(10px);transition:.25s;
 }
-
-.card p{
-    color:#9292a0;
-    font-size:14px;
-    line-height:1.55;
-}
-
-body.light .card p{
-    color:#666;
-}
-
-.card-link{
-    display:inline-block;
-    margin-top:14px;
-    color:#c68cff;
-    text-decoration:none;
-    font-weight:700;
-}
-
-.card-link:hover{
-    text-decoration:underline;
-}
-
-/* GAME CARDS */
-
-.game-card{
-    position:relative;
-    overflow:hidden;
-}
-
-.game-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-}
-
-.game-number{
-    width:42px;
-    height:42px;
-    display:grid;
-    place-items:center;
-    border-radius:13px;
-    background:linear-gradient(135deg,rgba(140,0,255,.30),rgba(0,130,255,.16));
-    border:1px solid rgba(180,80,255,.25);
-    font-weight:900;
-}
-
-.tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:5px;
-    margin-top:14px;
-}
-
-.tag{
-    font-size:11px;
-    padding:5px 8px;
-    border-radius:8px;
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.07);
-    color:#aaa;
-}
-
-.tag.new{
-    color:#bfffcf;
-    border-color:rgba(50,220,100,.3);
-}
-
-.tag.hot{
-    color:#ffd28a;
-    border-color:rgba(255,160,40,.3);
-}
-
-.tag.featured{
-    color:#dfb5ff;
-    border-color:rgba(180,80,255,.35);
-}
-
-/* SEARCH */
-
-.search-box{
-    margin-bottom:20px;
-}
-
-.search-box input{
-    width:100%;
-    padding:15px 17px;
-    border-radius:14px;
-    border:1px solid rgba(180,80,255,.28);
-    outline:none;
-    background:rgba(255,255,255,.045);
-    color:#fff;
-    font-size:15px;
-}
-
-body.light .search-box input{
-    background:#fff;
-    color:#222;
-}
-
-.search-box input:focus{
-    border-color:rgba(180,80,255,.7);
-    box-shadow:0 0 20px rgba(130,0,255,.12);
-}
-
-/* LIST */
-
-.list{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.list-item{
-    padding:17px;
-    border-radius:15px;
-    border:1px solid rgba(255,255,255,.07);
-    background:rgba(255,255,255,.035);
-}
-
-body.light .list-item{
-    background:rgba(0,0,0,.035);
-    border-color:rgba(0,0,0,.07);
-}
-
-.list-item strong{
-    display:block;
-    margin-bottom:6px;
-}
-
-.list-item span{
-    color:#888;
-    font-size:13px;
-    line-height:1.5;
-}
-
-/* SOCIAL */
-
-.social-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-}
-
-.social{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:15px;
-    color:#fff;
-    text-decoration:none;
-    border:1px solid rgba(255,255,255,.07);
-    background:rgba(255,255,255,.035);
-    border-radius:14px;
-    transition:.2s;
-}
-
-body.light .social{
-    color:#222;
-}
-
-.social:hover{
-    transform:translateY(-3px);
-    background:rgba(130,0,255,.12);
-    border-color:rgba(170,80,255,.4);
-}
-
-.social-icon{
-    width:25px;
-    height:25px;
-}
-
-/* FAQ */
-
-.faq{
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:14px;
-    overflow:hidden;
-}
-
-.faq details{
-    border-bottom:1px solid rgba(255,255,255,.07);
-    padding:16px;
-}
-
-.faq details:last-child{
-    border-bottom:0;
-}
-
-.faq summary{
-    cursor:pointer;
-    font-weight:700;
-}
-
-.faq p{
-    color:#90909d;
-    margin-top:10px;
-    line-height:1.6;
-}
-
-/* COPY */
-
-.copy-btn{
-    margin-top:10px;
-    border:1px solid rgba(180,80,255,.35);
-    background:rgba(130,0,255,.10);
-    color:#fff;
-    padding:8px 11px;
-    border-radius:9px;
-    cursor:pointer;
-}
-
-/* BACK TOP */
-
-#backTop{
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    width:45px;
-    height:45px;
-    border:1px solid rgba(180,80,255,.4);
-    background:rgba(15,10,30,.9);
-    color:#fff;
-    border-radius:13px;
-    cursor:pointer;
-    display:none;
-    z-index:60;
-    font-size:20px;
-}
+.to-top.show{opacity:1;pointer-events:auto;transform:none}
 
 /* TOAST */
+.toast{
+    position:fixed;left:50%;bottom:80px;z-index:2000;transform:translate(-50%,20px);
+    padding:11px 18px;border-radius:12px;background:rgba(20,10,45,.95);
+    border:1px solid rgba(175,90,255,.6);font-size:13px;opacity:0;pointer-events:none;transition:.25s;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
 
-#toast{
-    position:fixed;
-    left:50%;
-    bottom:25px;
-    transform:translate(-50%,20px);
-    opacity:0;
-    pointer-events:none;
-    padding:11px 16px;
-    border-radius:12px;
-    background:#151525;
-    border:1px solid rgba(180,80,255,.4);
-    color:#fff;
-    z-index:100;
-    transition:.25s;
+/* RULES MODAL */
+.rules-overlay{
+    position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;
+    padding:16px;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);
+}
+.rules-overlay.show{display:flex}
+
+.rules-modal{
+    position:relative;width:100%;max-width:600px;max-height:86vh;overflow-y:auto;padding:24px;
+    border-radius:22px;
+    background:radial-gradient(circle at top right,rgba(130,0,255,.18),transparent 40%),#0d0d1c;
+    border:1px solid rgba(170,80,255,.6);box-shadow:0 0 35px rgba(130,0,255,.28);
+    scrollbar-color:#8134bd #111122;
+    animation:pop .25s ease;
+}
+@keyframes pop{from{opacity:0;transform:scale(.95)}}
+
+.rules-header{padding-right:38px;margin-bottom:18px}
+.rules-header h2{font-size:clamp(18px,5vw,24px);line-height:1.4}
+.rules-subtitle{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.5}
+
+.rules-close{
+    position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:11px;
+    border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;font-size:23px;cursor:pointer;
+}
+.rules-close:hover{background:rgba(180,50,255,.3)}
+
+.rules-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+.rules-list li{
+    display:flex;align-items:flex-start;gap:11px;padding:12px;border-radius:13px;
+    background:rgba(255,255,255,.035);border:1px solid var(--line);
+    color:#e9e6f2;font-size:14px;line-height:1.65;overflow-wrap:anywhere;
+}
+.rule-number{
+    display:flex;align-items:center;justify-content:center;flex:none;width:28px;height:28px;border-radius:9px;
+    background:rgba(145,50,255,.2);border:1px solid rgba(175,100,255,.35);color:#d5aaff;font-size:12px;font-weight:800;
 }
 
-#toast.show{
-    opacity:1;
-    transform:translate(-50%,0);
+.rules-warning{
+    margin-top:14px;padding:14px;border-radius:13px;
+    background:rgba(255,170,0,.07);border:1px solid rgba(255,190,50,.25);
+    color:#f2dca7;font-size:13px;line-height:1.7;
+}
+.rules-thanks{text-align:center;margin-top:16px;color:#d5aaff;font-size:14px;line-height:1.7}
+.rules-footer{display:flex;justify-content:center;margin-top:18px}
+.rules-done{
+    border:1px solid rgba(180,80,255,.55);background:rgba(130,0,255,.25);color:#fff;
+    padding:13px 30px;border-radius:13px;font-size:14px;font-family:inherit;cursor:pointer;
+}
+.rules-done:hover{background:rgba(130,0,255,.42);box-shadow:0 0 18px rgba(150,0,255,.3)}
+
+/* ABOUT İÇERİĞİ */
+.about-body h4{font-size:16px;margin:20px 0 8px;color:#fff}
+.about-body p{color:#e0dcef;font-size:14px;line-height:1.75;margin-top:8px}
+.about-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.about-list li{
+    padding:11px 13px;border-radius:12px;font-size:14px;line-height:1.6;color:#e9e6f2;
+    background:rgba(255,255,255,.035);border:1px solid var(--line);
+}
+.about-body .link:first-of-type{margin-top:12px}
+
+:focus-visible{outline:2px solid #c58bff;outline-offset:2px}
+
+@media(max-width:420px){
+    .top-buttons{gap:8px}
+    .action{font-size:12px;min-height:70px}
+    .card{padding:15px}
+    .card-title{font-size:18px}
 }
 
-/* FOOTER */
-
-footer{
-    margin-top:50px;
-    padding-top:25px;
-    border-top:1px solid rgba(255,255,255,.07);
-    text-align:center;
-    color:#777;
-    font-size:13px;
-    line-height:1.8;
-}
-
-.footer-links{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:12px;
-    margin-bottom:12px;
-}
-
-.footer-links button{
-    background:none;
-    border:0;
-    color:#999;
-    cursor:pointer;
-}
-
-.footer-links button:hover{
-    color:#c68cff;
-}
-
-/* MOBILE */
-
-@media(max-width:850px){
-    .grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .social-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .nav-links{
-        display:none;
-        position:absolute;
-        top:70px;
-        left:0;
-        right:0;
-        padding:10px;
-        background:rgba(10,10,25,.96);
-        border:1px solid rgba(170,80,255,.25);
-        border-radius:16px;
-        flex-direction:column;
-    }
-
-    body.light .nav-links{
-        background:rgba(255,255,255,.97);
-    }
-
-    .nav-links.open{
-        display:flex;
-    }
-
-    .nav-links button{
-        width:100%;
-        text-align:left;
-    }
-
-    .menu-btn{
-        display:block;
-    }
-}
-
-@media(max-width:560px){
-    .container{
-        padding:12px 11px 45px;
-    }
-
-    .navbar{
-        border-radius:15px;
-    }
-
-    .hero{
-        padding:40px 8px 30px;
-    }
-
-    .hero h1{
-        font-size:39px;
-    }
-
-    .hero p{
-        font-size:14px;
-    }
-
-    .grid,
-    .social-grid{
-        grid-template-columns:1fr;
-    }
-
-    .card{
-        padding:17px;
-    }
-
-    .header-actions{
-        margin-left:auto;
-    }
-
-    .header-actions button{
-        padding:8px 9px;
-    }
+@media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .card{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -660,1093 +278,521 @@ footer{
 
 <div class="container">
 
-<header>
-    <nav class="navbar">
+    <div class="topbar">
+        <div class="lang-buttons">
+            <button id="trBtn" type="button" onclick="setLanguage('tr')">🇹🇷 Türkçe</button>
+            <button id="enBtn" type="button" onclick="setLanguage('en')">🇬🇧 English</button>
+        </div>
+        <button class="share-btn" id="shareBtn" type="button" onclick="sharePage()">🔗 <span id="shareText">Paylaş</span></button>
+    </div>
 
-        <button class="brand" onclick="showPage('home')">
-            WORLD_GAMEHUB
+    <div class="logo">
+        <div class="logo-badge">🎮</div>
+        <h1>WORLD_GAMEHUB</h1>
+        <p id="description"></p>
+    </div>
+
+    <div class="top-buttons">
+        <button class="action" id="aboutBtn" type="button" onclick="openAbout()">
+            <span class="ico">ℹ️</span>
+            <span id="aboutButton"></span>
         </button>
 
-        <div class="nav-links" id="navLinks">
-            <button onclick="showPage('home')">🏠 <span data-i18n="home">Ana Sayfa</span></button>
-            <button onclick="showPage('games')">🎮 <span data-i18n="games">Oyunlar</span></button>
-            <button onclick="showPage('popular')">🔥 <span data-i18n="popular">Popüler</span></button>
-            <button onclick="showPage('featured')">⭐ <span data-i18n="featured">Öne Çıkanlar</span></button>
-            <button onclick="showPage('updates')">📰 <span data-i18n="updates">Güncellemeler</span></button>
-            <button onclick="showPage('contact')">📩 <span data-i18n="contact">İletişim</span></button>
-        </div>
-
-        <div class="header-actions">
-            <button onclick="toggleTheme()" title="Tema">🌙</button>
-            <button onclick="toggleMenu()" class="menu-btn">☰</button>
-        </div>
-
-    </nav>
-</header>
-
-
-<!-- ANA SAYFA -->
-
-<section class="page active" id="home">
-
-    <div class="hero">
-
-        <div class="hero-badge">
-            🎮 <span data-i18n="communityBadge">Gaming Community</span>
-        </div>
-
-        <h1>WORLD_GAMEHUB</h1>
-
-        <p data-i18n="heroDescription">
-            Roblox ve popüler oyunlar için güncel içerikler, topluluk bağlantıları,
-            oyun bilgileri ve daha fazlası.
-        </p>
-
-        <div class="hero-buttons">
-            <button class="btn" onclick="showPage('games')">
-                🎮 <span data-i18n="exploreGames">Oyunları Keşfet</span>
-            </button>
-
-            <button class="btn" onclick="showPage('updates')">
-                📰 <span data-i18n="seeUpdates">Güncellemeleri Gör</span>
-            </button>
-        </div>
-
-    </div>
-
-
-    <div class="section-title">
-        <h2>🔥 <span data-i18n="popularGames">Popüler Oyunlar</span></h2>
-        <p data-i18n="popularDescription">
-            WORLD_GAMEHUB üzerinde yer alan popüler oyunlar.
-        </p>
-    </div>
-
-    <div class="grid">
-
-        <div class="card game-card">
-            <div class="game-top">
-                <div class="game-number">01</div>
-                <span>🔥</span>
-            </div>
-            <h3>Steal a Egg</h3>
-            <p data-i18n="gameShort">Oyun bilgileri ve güncel topluluk içerikleri.</p>
-            <div class="tags">
-                <span class="tag hot">🔥 POPÜLER</span>
-                <span class="tag new">🆕 YENİ</span>
-            </div>
-            <a class="card-link" href="#games" onclick="showPage('games')">Görüntüle →</a>
-        </div>
-
-        <div class="card game-card">
-            <div class="game-top">
-                <div class="game-number">02</div>
-                <span>🔥</span>
-            </div>
-            <h3>Steal a Brainrot</h3>
-            <p data-i18n="gameShort">Oyun bilgileri ve güncel topluluk içerikleri.</p>
-            <div class="tags">
-                <span class="tag hot">🔥 POPÜLER</span>
-            </div>
-            <a class="card-link" href="#games" onclick="showPage('games')">Görüntüle →</a>
-        </div>
-
-        <div class="card game-card">
-            <div class="game-top">
-                <div class="game-number">03</div>
-                <span>⭐</span>
-            </div>
-            <h3>Grow a Garden</h3>
-            <p data-i18n="gameShort">Oyun bilgileri ve güncel topluluk içerikleri.</p>
-            <div class="tags">
-                <span class="tag featured">⭐ ÖNE ÇIKAN</span>
-            </div>
-            <a class="card-link" href="#games" onclick="showPage('games')">Görüntüle →</a>
-        </div>
-
-    </div>
-
-
-    <div class="section-title" style="margin-top:35px;">
-        <h2>🆕 <span data-i18n="latest">Yeni Eklenenler</span></h2>
-        <p data-i18n="latestDescription">
-            WORLD_GAMEHUB'daki yeni içerikler.
-        </p>
-    </div>
-
-    <div class="list">
-
-        <div class="list-item">
-            <strong>🆕 WORLD_GAMEHUB yeni tasarım</strong>
-            <span>Yeni site yapısı, mobil menü, tema ve gelişmiş sayfalar.</span>
-        </div>
-
-        <div class="list-item">
-            <strong>🎮 Yeni oyun kategorileri</strong>
-            <span>Popüler Roblox oyunları için yeni bölümler oluşturuldu.</span>
-        </div>
-
-        <div class="list-item">
-            <strong>🌐 Türkçe / English</strong>
-            <span>Site genelinde dil desteği geliştirildi.</span>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- OYUNLAR -->
-
-<section class="page" id="games">
-
-    <div class="section-title">
-        <h2>🎮 <span data-i18n="allGames">Tüm Oyunlar</span></h2>
-        <p data-i18n="gamesDescription">
-            WORLD_GAMEHUB üzerinde bulunan oyunlar.
-        </p>
-    </div>
-
-    <div class="search-box">
-        <input
-            type="search"
-            id="gameSearch"
-            placeholder="🔎 Oyun ara..."
-            oninput="searchGames()">
-    </div>
-
-    <div class="grid" id="gamesGrid">
-
-        <div class="card game-card" data-game="steal a egg">
-            <div class="game-top">
-                <div class="game-number">01</div>
-                <span>🥚</span>
-            </div>
-            <h3>Steal a Egg</h3>
-            <p>Roblox oyun bilgileri ve topluluk içerikleri.</p>
-            <div class="tags">
-                <span class="tag hot">🔥 POPÜLER</span>
-                <span class="tag new">🆕 YENİ</span>
-            </div>
-        </div>
-
-        <div class="card game-card" data-game="ride a pet">
-            <div class="game-top">
-                <div class="game-number">02</div>
-                <span>🐾</span>
-            </div>
-            <h3>Ride a Pet</h3>
-            <p>Roblox oyun bilgileri ve topluluk içerikleri.</p>
-            <div class="tags">
-                <span class="tag new">🆕 YENİ</span>
-            </div>
-        </div>
-
-        <div class="card game-card" data-game="brookhaven">
-            <div class="game-top">
-                <div class="game-number">03</div>
-                <span>🏙️</span>
-            </div>
-            <h3>Brookhaven</h3>
-            <p>Roblox oyun bilgileri ve topluluk içerikleri.</p>
-        </div>
-
-        <div class="card game-card" data-game="murder mystery 2">
-            <div class="game-top">
-                <div class="game-number">04</div>
-                <span>🔪</span>
-            </div>
-            <h3>Murder Mystery 2</h3>
-            <p>Roblox oyun bilgileri ve topluluk içerikleri.</p>
-            <div class="tags">
-                <span class="tag hot">🔥 POPÜLER</span>
-            </div>
-        </div>
-
-        <div class="card game-card" data-game="blox fruits">
-            <div class="game-top">
-                <div class="game-number">05</div>
-                <span>🍊</span>
-            </div>
-            <h3>Blox Fruits</h3>
-            <p>Roblox oyun bilgileri ve topluluk içerikleri.</p>
-        </div>
-
-        <div class="card game-card" data-game="adopt me">
-            <div class="game-top">
-                <div class="game-number">06</div>
-                <span>🐶</span>
-            </div>
-            <h3>Adopt Me</h3>
-            <p>Roblox oyun bilgileri ve topluluk içerikleri.</p>
-        </div>
-
-        <div class="card game-card" data-game="steal a brainrot">
-            <div class="game-top">
-                <div class="game-number">07</div>
-                <span>🧠</span>
-            </div>
-            <h3>Steal a Brainrot</h3>
-            <p>Roblox oyun bilgileri ve topluluk içerikleri.</p>
-            <div class="tags">
-                <span class="tag hot">🔥 POPÜLER</span>
-            </div>
-        </div>
-
-        <div class="card game-card" data-game="rivals">
-            <div class="game-top">
-                <div class="game-number">08</div>
-                <span>🎯</span>
-            </div>
-            <h3>Rivals</h3>
-            <p>Roblox oyun bilgileri ve topluluk içerikleri.</p>
-        </div>
-
-        <div class="card game-card" data-game="slayers">
-            <div class="game-top">
-                <div class="game-number">09</div>
-                <span>⚔️</span>
-            </div>
-            <h3>Slayers</h3>
-            <p>Roblox oyun bilgileri ve topluluk içerikleri.</p>
-        </div>
-
-        <div class="card game-card" data-game="99 nights in the forest">
-            <div class="game-top">
-                <div class="game-number">10</div>
-                <span>🌲</span>
-            </div>
-            <h3>99 Nights in the Forest</h3>
-            <p>Roblox oyun bilgileri ve topluluk içerikleri.</p>
-            <div class="tags">
-                <span class="tag hot">🔥 POPÜLER</span>
-            </div>
-        </div>
-
-        <div class="card game-card" data-game="grow a garden">
-            <div class="game-top">
-                <div class="game-number">11</div>
-                <span>🌱</span>
-            </div>
-            <h3>Grow a Garden</h3>
-            <p>Roblox oyun bilgileri ve topluluk içerikleri.</p>
-            <div class="tags">
-                <span class="tag featured">⭐ ÖNE ÇIKAN</span>
-            </div>
-        </div>
-
-        <div class="card game-card" data-game="grow a garden 2">
-            <div class="game-top">
-                <div class="game-number">12</div>
-                <span>🌿</span>
-            </div>
-            <h3>Grow a Garden 2</h3>
-            <p>Roblox oyun bilgileri ve topluluk içerikleri.</p>
-            <div class="tags">
-                <span class="tag new">🆕 YENİ</span>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- POPÜLER -->
-
-<section class="page" id="popular">
-
-    <div class="section-title">
-        <h2>🔥 <span data-i18n="popular">Popüler</span></h2>
-        <p data-i18n="popularPageDescription">
-            Öne çıkan popüler oyunlar ve içerikler.
-        </p>
-    </div>
-
-    <div class="grid">
-
-        <div class="card">
-            <div class="card-icon">🥚</div>
-            <h3>Steal a Egg</h3>
-            <p>Popüler Roblox oyunları arasında yer alan içerik.</p>
-            <div class="tags">
-                <span class="tag hot">🔥 POPÜLER</span>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">🧠</div>
-            <h3>Steal a Brainrot</h3>
-            <p>Topluluk tarafından takip edilen oyun içerikleri.</p>
-            <div class="tags">
-                <span class="tag hot">🔥 POPÜLER</span>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">🌲</div>
-            <h3>99 Nights in the Forest</h3>
-            <p>Güncel oyun topluluğu içerikleri.</p>
-            <div class="tags">
-                <span class="tag hot">🔥 POPÜLER</span>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ÖNE ÇIKAN -->
-
-<section class="page" id="featured">
-
-    <div class="section-title">
-        <h2>⭐ <span data-i18n="featured">Öne Çıkanlar</span></h2>
-        <p data-i18n="featuredDescription">
-            WORLD_GAMEHUB tarafından öne çıkarılan içerikler.
-        </p>
-    </div>
-
-    <div class="grid">
-
-        <div class="card">
-            <div class="card-icon">🌱</div>
-            <h3>Grow a Garden</h3>
-            <p>Öne çıkan oyun bölümü.</p>
-            <div class="tags">
-                <span class="tag featured">⭐ ÖNE ÇIKAN</span>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">🎮</div>
-            <h3>WORLD_GAMEHUB Community</h3>
-            <p>Topluluk bağlantılarına hızlı erişim.</p>
-            <a class="card-link" onclick="showPage('community')" href="#community">
-                Görüntüle →
-            </a>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- GÜNCELLEMELER -->
-
-<section class="page" id="updates">
-
-    <div class="section-title">
-        <h2>📰 <span data-i18n="updates">Güncellemeler</span></h2>
-        <p data-i18n="updatesDescription">
-            WORLD_GAMEHUB üzerinde yapılan değişiklikler.
-        </p>
-    </div>
-
-    <div class="list">
-
-        <div class="list-item">
-            <strong>🚀 WORLD_GAMEHUB Yeni Site Yapısı</strong>
-            <span>
-                Tek sayfalık yeni yapı, mobil navigasyon, arama,
-                tema ve gelişmiş bölümler eklendi.
-            </span>
-        </div>
-
-        <div class="list-item">
-            <strong>🎮 Yeni Oyunlar</strong>
-            <span>
-                Steal a Egg, Ride a Pet, Brookhaven, Murder Mystery 2,
-                Blox Fruits, Adopt Me, Steal a Brainrot, Rivals,
-                Slayers, 99 Nights in the Forest, Grow a Garden ve
-                Grow a Garden 2 eklendi.
-            </span>
-        </div>
-
-        <div class="list-item">
-            <strong>🌐 Dil Sistemi</strong>
-            <span>
-                Türkçe ve English desteği site genelinde kullanılabilir hale getirildi.
-            </span>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- TOPLULUK -->
-
-<section class="page" id="community">
-
-    <div class="section-title">
-        <h2>👥 <span data-i18n="community">Topluluk</span></h2>
-        <p data-i18n="communityDescription">
-            WORLD_GAMEHUB topluluk bağlantıları.
-        </p>
-    </div>
-
-    <div class="social-grid">
-
-        <a class="social"
-           href="https://www.tiktok.com/@oyundunyasi.tr"
-           target="_blank"
-           rel="noopener">
-            <img class="social-icon"
-                 src="https://cdn.simpleicons.org/tiktok/ffffff"
-                 alt="TikTok">
-            TikTok
+        <button class="action" id="rulesButton" type="button" onclick="openRules()">
+            <span class="ico">📜</span>
+            <span id="rulesButtonText"></span>
+        </button>
+
+        <a class="action proof" id="proofButton" href="https://t.me/world_gamehubproof" target="_blank" rel="noopener">
+            <span class="ico">🛡️</span>
+            <span id="proofButtonText"></span>
         </a>
-
-        <a class="social"
-           href="https://www.instagram.com/oyundunyasi.tr1"
-           target="_blank"
-           rel="noopener">
-            <img class="social-icon"
-                 src="https://cdn.simpleicons.org/instagram/ffffff"
-                 alt="Instagram">
-            Instagram
-        </a>
-
-        <a class="social"
-           href="https://www.youtube.com/@Game_WorldHub"
-           target="_blank"
-           rel="noopener">
-            <img class="social-icon"
-                 src="https://cdn.simpleicons.org/youtube/ffffff"
-                 alt="YouTube">
-            YouTube
-        </a>
-
-        <a class="social"
-           href="https://t.me/World_GameHub"
-           target="_blank"
-           rel="noopener">
-            <img class="social-icon"
-                 src="https://cdn.simpleicons.org/telegram/ffffff"
-                 alt="Telegram">
-            Telegram
-        </a>
-
-        <a class="social"
-           href="https://discord.gg/sQBdWmacF"
-           target="_blank"
-           rel="noopener">
-            <img class="social-icon"
-                 src="https://cdn.simpleicons.org/discord/ffffff"
-                 alt="Discord">
-            Discord
-        </a>
-
-        <a class="social"
-           href="https://www.roblox.com/share/g/881008385"
-           target="_blank"
-           rel="noopener">
-            <img class="social-icon"
-                 src="https://cdn.simpleicons.org/roblox/ffffff"
-                 alt="Roblox">
-            Roblox Group
-        </a>
-
     </div>
 
-</section>
+    <nav class="quick-nav" id="quickNav" aria-label="Quick navigation"></nav>
 
+    <main id="sections"></main>
 
-<!-- İLETİŞİM -->
-
-<section class="page" id="contact">
-
-    <div class="section-title">
-        <h2>📩 <span data-i18n="contact">İletişim</span></h2>
-        <p data-i18n="contactDescription">
-            Oyun önerileri, hata bildirimleri veya diğer konular için bize ulaşabilirsin.
-        </p>
-    </div>
-
-    <div class="grid">
-
-        <div class="card">
-            <div class="card-icon">🎵</div>
-            <h3>TikTok</h3>
-            <p data-i18n="contactSocial">
-                İletişim için TikTok hesabımızdan mesaj gönderebilirsin.
-            </p>
-            <a class="card-link"
-               href="https://www.tiktok.com/@oyundunyasi.tr"
-               target="_blank"
-               rel="noopener">
-                TikTok'a Git →
-            </a>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">📸</div>
-            <h3>Instagram</h3>
-            <p data-i18n="contactSocialInstagram">
-                İletişim için Instagram hesabımızdan mesaj gönderebilirsin.
-            </p>
-            <a class="card-link"
-               href="https://www.instagram.com/oyundunyasi.tr1"
-               target="_blank"
-               rel="noopener">
-                Instagram'a Git →
-            </a>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">💬</div>
-            <h3>Discord</h3>
-            <p data-i18n="discordContact">
-                Topluluğumuza katılabilir ve Discord üzerinden iletişim kurabilirsin.
-            </p>
-            <a class="card-link"
-               href="https://discord.gg/sQBdWmacF"
-               target="_blank"
-               rel="noopener">
-                Discord'a Katıl →
-            </a>
-        </div>
-
-    </div>
-
-    <div class="card" style="margin-top:18px;">
-        <h3>💡 <span data-i18n="gameRequest">Oyun İsteği</span></h3>
-        <p data-i18n="gameRequestDescription">
-            Sitede görmek istediğin bir oyunu bize sosyal medya hesaplarımızdan iletebilirsin.
-            GitHub Pages üzerinde harici veritabanı kullanılmadığı için gönderimler burada
-            otomatik olarak kaydedilmez.
-        </p>
-        <div class="hero-buttons" style="justify-content:flex-start;">
-            <a class="btn"
-               href="https://www.tiktok.com/@oyundunyasi.tr"
-               target="_blank"
-               rel="noopener">
-                Oyun Öner
-            </a>
-        </div>
-    </div>
-
-</section>
-
-
-<!-- SSS -->
-
-<section class="page" id="faq">
-
-    <div class="section-title">
-        <h2>❓ <span data-i18n="faq">Sık Sorulan Sorular</span></h2>
-    </div>
-
-    <div class="faq">
-
-        <details>
-            <summary>WORLD_GAMEHUB nedir?</summary>
-            <p>
-                WORLD_GAMEHUB; Roblox ve farklı popüler oyunlar için oyun bilgileri,
-                topluluk bağlantıları, güncellemeler ve çeşitli içerikleri bir araya
-                getiren bir gaming community platformudur.
-            </p>
-        </details>
-
-        <details>
-            <summary>Scriptler bu sitede bulunuyor mu?</summary>
-            <p>
-                Hayır. Bu site script kodlarını barındırmak için kullanılmaz.
-                İlgili içerikler ve topluluk bağlantıları ayrı platformlarda bulunabilir.
-            </p>
-        </details>
-
-        <details>
-            <summary>Yeni bir oyun nasıl öneririm?</summary>
-            <p>
-                İletişim bölümündeki TikTok, Instagram veya Discord bağlantılarından
-                bize oyun önerini gönderebilirsin.
-            </p>
-        </details>
-
-        <details>
-            <summary>Site neden tek HTML dosyası?</summary>
-            <p>
-                WORLD_GAMEHUB'ın GitHub Pages üzerinde kolayca yönetilebilmesi için
-                site tek HTML dosyası şeklinde hazırlanmıştır.
-            </p>
-        </details>
-
-    </div>
-
-</section>
-
-
-<!-- KURALLAR -->
-
-<section class="page" id="rules">
-
-    <div class="section-title">
-        <h2>📜 <span data-i18n="rules">Kurallar</span></h2>
-    </div>
-
-    <div class="list">
-
-        <div class="list-item">
-            <strong>1. Güvenli bağlantılar</strong>
-            <span>Şüpheli veya güvenilmeyen bağlantılara karşı dikkatli olun.</span>
-        </div>
-
-        <div class="list-item">
-            <strong>2. Topluluk kuralları</strong>
-            <span>Topluluk platformlarında ilgili platformların kurallarına uyun.</span>
-        </div>
-
-        <div class="list-item">
-            <strong>3. Sorumluluk</strong>
-            <span>Harici sitelerdeki içeriklerden WORLD_GAMEHUB sorumlu değildir.</span>
-        </div>
-
-        <div class="list-item">
-            <strong>4. Saygılı iletişim</strong>
-            <span>Diğer topluluk üyelerine karşı saygılı davranın.</span>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- GİZLİLİK -->
-
-<section class="page" id="privacy">
-
-    <div class="section-title">
-        <h2>🔒 <span data-i18n="privacy">Gizlilik</span></h2>
-    </div>
-
-    <div class="card">
-        <p>
-            WORLD_GAMEHUB bu tek sayfalık GitHub Pages sürümünde kullanıcı hesabı
-            veya harici veritabanı sistemi kullanmaz. Site üzerindeki dil ve tema
-            gibi bazı tercihler tarayıcının yerel depolama özelliğinde tutulabilir.
-        </p>
-    </div>
-
-</section>
-
-
-<!-- KULLANIM KOŞULLARI -->
-
-<section class="page" id="terms">
-
-    <div class="section-title">
-        <h2>📋 <span data-i18n="terms">Kullanım Koşulları</span></h2>
-    </div>
-
-    <div class="card">
-        <p>
-            WORLD_GAMEHUB üzerindeki bağlantılar ve bilgiler bilgilendirme amacıyla
-            sunulur. Harici platformlara geçtiğinizde ilgili platformların kendi
-            şartları geçerlidir.
-        </p>
-    </div>
-
-</section>
-
-
-<!-- HAKKINDA -->
-
-<section class="page" id="about">
-
-    <div class="section-title">
-        <h2>ℹ️ <span data-i18n="about">WORLD_GAMEHUB Nedir?</span></h2>
-    </div>
-
-    <div class="card">
-
-        <div class="card-icon">🎮</div>
-
-        <h3>WORLD_GAMEHUB</h3>
-
-        <p data-i18n="aboutText">
-            WORLD_GAMEHUB, Roblox ve diğer popüler oyunlar için güncel içerikleri,
-            oyun bilgilerini, topluluk bağlantılarını ve duyuruları bir araya getiren
-            bir gaming community platformudur.
-
-            Roblox tarafında popüler oyunlar ve topluluk içerikleri takip edilir.
-            Ayrıca Car Parking Multiplayer 1 & 2 gibi oyunlar için de içerikler,
-            bağlantılar ve topluluk desteği sunulabilir.
-
-            WORLD_GAMEHUB üzerinde script kodlarının kendisi barındırılmaz.
-            Kullanıcılar oyun önerilerini ve geri bildirimlerini TikTok,
-            Instagram veya Discord üzerinden iletebilir.
-        </p>
-
-    </div>
-
-</section>
-
-
-<footer>
-
-    <div class="footer-links">
-        <button onclick="showPage('about')" data-i18n="about">Hakkında</button>
-        <button onclick="showPage('faq')" data-i18n="faq">SSS</button>
-        <button onclick="showPage('rules')" data-i18n="rules">Kurallar</button>
-        <button onclick="showPage('privacy')" data-i18n="privacy">Gizlilik</button>
-        <button onclick="showPage('terms')" data-i18n="terms">Kullanım Koşulları</button>
-        <button onclick="showPage('contact')" data-i18n="contact">İletişim</button>
-    </div>
-
-    WORLD_GAMEHUB © 2026
-
-</footer>
+    <footer>WORLD_GAMEHUB © 2026</footer>
 
 </div>
 
+<button class="to-top" id="toTop" type="button" aria-label="Top" onclick="window.scrollTo({top:0})">↑</button>
+<div class="toast" id="toast" role="status"></div>
 
-<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    ↑
-</button>
+<!-- RULES MODAL -->
+<div class="rules-overlay" id="rulesOverlay" onclick="overlayClick(event)" aria-hidden="true">
+    <section class="rules-modal" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
 
-<div id="toast"></div>
+        <button class="rules-close" type="button" onclick="closeRules()" aria-label="Close">×</button>
 
+        <div class="rules-header">
+            <h2 id="rulesTitle"></h2>
+            <p class="rules-subtitle" id="rulesSubtitle"></p>
+        </div>
+
+        <ol class="rules-list" id="rulesList"></ol>
+        <div class="rules-warning" id="rulesWarning"></div>
+        <p class="rules-thanks" id="rulesThanks"></p>
+
+        <div class="rules-footer">
+            <button class="rules-done" id="rulesDone" type="button" onclick="closeRules()"></button>
+        </div>
+    </section>
+</div>
+
+<!-- ABOUT MODAL -->
+<div class="rules-overlay" id="aboutOverlay" onclick="overlayClick(event)" aria-hidden="true">
+    <section class="rules-modal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+
+        <button class="rules-close" type="button" onclick="closeModal('aboutOverlay')" aria-label="Close">×</button>
+
+        <div class="rules-header">
+            <h2 id="aboutTitle"></h2>
+            <p class="rules-subtitle">Gaming • Scripts • Community</p>
+        </div>
+
+        <div class="about-body" id="aboutBody"></div>
+
+        <div class="rules-footer">
+            <button class="rules-done" id="aboutDone" type="button" onclick="closeModal('aboutOverlay')"></button>
+        </div>
+    </section>
+</div>
 
 <script>
-
-/* =========================================================
-   DİL SİSTEMİ
-========================================================= */
+/* ============ LİNKLER / BÖLÜMLER ============
+   Yeni kart eklemek için aşağıdaki listeye bir blok ekle.
+   icon  : simpleicons adı (ör. "tiktok") veya emoji
+   color : kartın üst çizgi rengi
+   links : { emoji, key, url, proof(opsiyonel) }
+============================================= */
+const sections = [
+    {
+        id:"telegram", icon:"telegram", color:"#27a7e7", titleKey:"telegram",
+        groups:[
+            {
+                icon:"roblox", titleKey:"roblox",
+                links:[
+                    {emoji:"📜", key:"robloxScript", url:"https://t.me/World_GameHub"},
+                    {emoji:"💬", key:"robloxChat",   url:"https://t.me/+TG8oigYcB8szMjI8"}
+                ]
+            },
+            {
+                emoji:"🚗", titleKey:"carParking",
+                links:[
+                    {emoji:"📜", key:"carScript", url:"https://t.me/oyundunyasitr"},
+                    {emoji:"💬", key:"carChat",   url:"https://t.me/oyundunyasi_takas_sohbet"}
+                ]
+            },
+            {
+                emoji:"🛡️", titleKey:"proofTitle", hintKey:"proofHint",
+                links:[
+                    {emoji:"✅", key:"proofChannel", url:"https://t.me/world_gamehubproof", proof:true}
+                ]
+            }
+        ]
+    },
+    {
+        id:"tiktok", icon:"tiktok", color:"#ff2d6f", titleKey:"tiktok",
+        links:[{emoji:"👤", key:"mainAccount", url:"https://www.tiktok.com/@oyundunyasi.tr"}]
+    },
+    {
+        id:"youtube", icon:"youtube", color:"#ff2020", titleKey:"youtube",
+        links:[{emoji:"📺", key:"mainChannel", url:"https://www.youtube.com/@Game_WorldHub"}]
+    },
+    {
+        id:"discord", icon:"discord", color:"#5865f2", titleKey:"discord",
+        links:[{emoji:"💬", key:"discordServer", url:"https://discord.gg/tsugqtvQtm"}]
+    },
+    {
+        id:"roblox", icon:"roblox", color:"#e8e8e8", titleKey:"robloxGroupTitle",
+        links:[{emoji:"👥", key:"robloxGroup", url:"https://www.roblox.com/share/g/881008385"}]
+    },
+    {
+        id:"instagram", icon:"instagram", color:"#e1306c", titleKey:"instagram",
+        links:[{emoji:"👤", key:"mainAccount", url:"https://www.instagram.com/oyundunyasi.tr1?stkn=ZWF2eDB5bDJ5bHpp"}]
+    }
+];
 
 const translations = {
-
     tr:{
-        home:"Ana Sayfa",
-        games:"Oyunlar",
-        popular:"Popüler",
-        featured:"Öne Çıkanlar",
-        updates:"Güncellemeler",
-        contact:"İletişim",
-
-        communityBadge:"Gaming Community",
-
-        heroDescription:
-        "Roblox ve popüler oyunlar için güncel içerikler, topluluk bağlantıları, oyun bilgileri ve daha fazlası.",
-
-        exploreGames:"Oyunları Keşfet",
-        seeUpdates:"Güncellemeleri Gör",
-
-        popularGames:"Popüler Oyunlar",
-        popularDescription:
-        "WORLD_GAMEHUB üzerinde yer alan popüler oyunlar.",
-
-        gameShort:
-        "Oyun bilgileri ve güncel topluluk içerikleri.",
-
-        latest:"Yeni Eklenenler",
-        latestDescription:
-        "WORLD_GAMEHUB'daki yeni içerikler.",
-
-        allGames:"Tüm Oyunlar",
-        gamesDescription:
-        "WORLD_GAMEHUB üzerinde bulunan oyunlar.",
-
-        popularPageDescription:
-        "Öne çıkan popüler oyunlar ve içerikler.",
-
-        featuredDescription:
-        "WORLD_GAMEHUB tarafından öne çıkarılan içerikler.",
-
-        community:"Topluluk",
-        communityDescription:
-        "WORLD_GAMEHUB topluluk bağlantıları.",
-
-        contactDescription:
-        "Oyun önerileri, hata bildirimleri veya diğer konular için bize ulaşabilirsin.",
-
-        contactSocial:
-        "İletişim için TikTok hesabımızdan mesaj gönderebilirsin.",
-
-        contactSocialInstagram:
-        "İletişim için Instagram hesabımızdan mesaj gönderebilirsin.",
-
-        discordContact:
-        "Topluluğumuza katılabilir ve Discord üzerinden iletişim kurabilirsin.",
-
-        gameRequest:"Oyun İsteği",
-
-        gameRequestDescription:
-        "Sitede görmek istediğin bir oyunu bize sosyal medya hesaplarımızdan iletebilirsin. GitHub Pages üzerinde harici veritabanı kullanılmadığı için gönderimler burada otomatik olarak kaydedilmez.",
-
-        faq:"SSS",
-        rules:"Kurallar",
-        privacy:"Gizlilik",
-        terms:"Kullanım Koşulları",
-        about:"WORLD_GAMEHUB Nedir?",
-
-        aboutText:
-        "WORLD_GAMEHUB, Roblox ve diğer popüler oyunlar için güncel içerikleri, oyun bilgilerini, topluluk bağlantılarını ve duyuruları bir araya getiren bir gaming community platformudur. Roblox tarafında popüler oyunlar ve topluluk içerikleri takip edilir. Ayrıca Car Parking Multiplayer 1 & 2 gibi oyunlar için de içerikler, bağlantılar ve topluluk desteği sunulabilir. WORLD_GAMEHUB üzerinde script kodlarının kendisi barındırılmaz. Kullanıcılar oyun önerilerini ve geri bildirimlerini TikTok, Instagram veya Discord üzerinden iletebilir."
+        description:"Oyunlar, scriptler ve topluluk bağlantılarımız",
+        aboutButton:"WORLD_GAMEHUB Nedir?",
+        rulesButton:"Topluluk Kuralları",
+        proofButton:"Güvence",
+        share:"Paylaş",
+        copied:"Bağlantı kopyalandı ✅",
+        tiktok:"TikTok", youtube:"YouTube", telegram:"Telegram", discord:"Discord", instagram:"Instagram",
+        mainAccount:"Ana Hesap", mainChannel:"Ana Kanal",
+        roblox:"Roblox", carParking:"Car Parking",
+        robloxScript:"Roblox Script Kanalı",
+        robloxChat:"Roblox Sohbet & Takas Grubu",
+        carScript:"Car Parking Script Kanalı",
+        carChat:"Car Parking Sohbet & Takas Grubu",
+        proofTitle:"Güvence",
+        proofHint:"Takas yapmadan önce güvence kanalımıza göz atın.",
+        proofChannel:"Güvence Kanalı",
+        discordServer:"WORLD_GAMEHUB Sunucusu",
+        robloxGroupTitle:"Roblox Group",
+        robloxGroup:"Roblox Grubu",
+        rulesTitle:"📜 WORLD_GAMEHUB TOPLULUĞU — SUNUCU KURALLARI",
+        rulesSubtitle:"Lütfen topluluğumuza katılmadan önce tüm kuralları okuyun.",
+        rules:[
+            "Herkese saygılı davranın.",
+            "Küfür, argo ve hakaret kullanımı kesinlikle yasaktır.",
+            "Irkçılık, din ve siyaset konularında tartışmak kesinlikle yasaktır.",
+            "Reklam yapmak tamamen yasaktır.",
+            "Herhangi bir bağlantı (link) paylaşmak yasaktır.",
+            "Spam, flood veya gereksiz etiketleme (ping) yapmayın.",
+            "Dolandırıcılık veya hesap hırsızlığı yasaktır.",
+            "Hile, açık kullanımı (exploit) veya zararlı yazılım/kod paylaşımı yasaktır.",
+            "Yetkili talimatlarına uyun.",
+            "Kendinize veya başkasına ait özel bilgileri paylaşmayın.",
+            "Mesajları ilgili kanallarda paylaşın."
+        ],
+        rulesWarning:"⚠️ Kuralların ihlali; uyarı, susturma (mute), sunucudan atılma (kick) veya yasaklanma (ban) ile sonuçlanabilir.",
+        rulesThanks:"Topluluğumuzu dostane ve güvenli tutmaya yardımcı olduğunuz için teşekkürler! 💜",
+        rulesDone:"Anladım",
+        aboutTitle:"🎮 WORLD_GAMEHUB Nedir?",
+        aboutIntro:[
+            "WORLD_GAMEHUB, oyuncular için güncel scriptler, oyun içerikleri ve topluluk bağlantıları sunan bir oyun platformudur.",
+            "Özellikle Roblox ve Car Parking 1 & 2 gibi popüler oyunlarda güncel script içerikleri paylaşmayı hedefliyoruz."
+        ],
+        aboutOfferTitle:"🔥 Neler Sunuyoruz?",
+        aboutOffer:[
+            "Roblox için en güncel scriptler",
+            "Popüler Roblox oyunları için scriptler",
+            "İstediğiniz Roblox oyunları için script içerikleri",
+            "Car Parking 1 & 2 için scriptler",
+            "Yeni oyunlar ve güncellemeler",
+            "Oyun toplulukları ve takas grupları"
+        ],
+        aboutWishTitle:"💡 İstediğiniz Oyun",
+        aboutWish:"Aradığınız oyun listemizde yoksa bize ulaşabilirsiniz. Oynamak istediğiniz veya script istediğiniz oyunu belirtebilirsiniz. Uygun olduğunda istediğiniz oyun için içerik ve script paylaşımı yapılabilir.",
+        aboutContactTitle:"📩 İletişim",
+        aboutContact:"Herhangi bir soru, öneri veya script isteğiniz varsa TikTok veya Instagram hesabımız üzerinden bize ulaşabilirsiniz.",
+        aboutTikTok:"TikTok — @oyundunyasi.tr",
+        aboutInstagram:"Instagram — @oyundunyasi.tr1"
     },
 
     en:{
-        home:"Home",
-        games:"Games",
-        popular:"Popular",
-        featured:"Featured",
-        updates:"Updates",
-        contact:"Contact",
-
-        communityBadge:"Gaming Community",
-
-        heroDescription:
-        "Gaming content, community links, game information and more for Roblox and popular games.",
-
-        exploreGames:"Explore Games",
-        seeUpdates:"View Updates",
-
-        popularGames:"Popular Games",
-        popularDescription:
-        "Popular games available on WORLD_GAMEHUB.",
-
-        gameShort:
-        "Game information and community content.",
-
-        latest:"Latest Additions",
-        latestDescription:
-        "New content added to WORLD_GAMEHUB.",
-
-        allGames:"All Games",
-        gamesDescription:
-        "Games available on WORLD_GAMEHUB.",
-
-        popularPageDescription:
-        "Featured popular games and content.",
-
-        featuredDescription:
-        "Content highlighted by WORLD_GAMEHUB.",
-
-        community:"Community",
-        communityDescription:
-        "WORLD_GAMEHUB community links.",
-
-        contactDescription:
-        "Contact us for game suggestions, bug reports or other topics.",
-
-        contactSocial:
-        "You can message us through our TikTok account.",
-
-        contactSocialInstagram:
-        "You can message us through our Instagram account.",
-
-        discordContact:
-        "Join our community and contact us through Discord.",
-
-        gameRequest:"Game Request",
-
-        gameRequestDescription:
-        "You can send us a game suggestion through our social media accounts. Since this GitHub Pages version does not use an external database, submissions are not automatically stored here.",
-
-        faq:"FAQ",
-        rules:"Rules",
-        privacy:"Privacy",
-        terms:"Terms of Use",
-        about:"What is WORLD_GAMEHUB?",
-
-        aboutText:
-        "WORLD_GAMEHUB is a gaming community platform that brings together current content, game information, community links and announcements for Roblox and other popular games. Roblox games and community content can be followed through the platform. Content, links and community support may also be provided for games such as Car Parking Multiplayer 1 & 2. Script code itself is not hosted on WORLD_GAMEHUB. Users can send game suggestions and feedback through TikTok, Instagram or Discord."
+        description:"Our gaming, script and community links",
+        aboutButton:"What is WORLD_GAMEHUB?",
+        rulesButton:"Community Rules",
+        proofButton:"Proof",
+        share:"Share",
+        copied:"Link copied ✅",
+        tiktok:"TikTok", youtube:"YouTube", telegram:"Telegram", discord:"Discord", instagram:"Instagram",
+        mainAccount:"Main Account", mainChannel:"Main Channel",
+        roblox:"Roblox", carParking:"Car Parking",
+        robloxScript:"Roblox Script Channel",
+        robloxChat:"Roblox Chat & Trading Group",
+        carScript:"Car Parking Script Channel",
+        carChat:"Car Parking Chat & Trading Group",
+        proofTitle:"Proof",
+        proofHint:"Check our proof channel before trading.",
+        proofChannel:"Proof Channel",
+        discordServer:"WORLD_GAMEHUB Server",
+        robloxGroupTitle:"Roblox Group",
+        robloxGroup:"Roblox Group",
+        rulesTitle:"📜 WORLD_GAMEHUB COMMUNITY — SERVER RULES",
+        rulesSubtitle:"Please read all the rules before participating in our community.",
+        rules:[
+            "Treat everyone with respect.",
+            "Swearing, vulgar language and insults are strictly prohibited.",
+            "Arguments about racism, religion and politics are strictly prohibited.",
+            "Advertising is completely prohibited.",
+            "Sharing any links is prohibited.",
+            "Do not spam, flood or unnecessarily ping people.",
+            "Scamming or account theft is prohibited.",
+            "Cheating, exploiting or sharing malicious software/code is prohibited.",
+            "Follow the instructions of the moderators.",
+            "Do not share your own or anyone else's private information.",
+            "Post messages in the appropriate channels."
+        ],
+        rulesWarning:"⚠️ Violating the rules may result in a warning, mute, kick or ban from the server.",
+        rulesThanks:"Thank you for helping keep our community friendly and safe! 💜",
+        rulesDone:"Got it",
+        aboutTitle:"🎮 What is WORLD_GAMEHUB?",
+        aboutIntro:[
+            "WORLD_GAMEHUB is a gaming platform that offers up-to-date scripts, game content and community links for players.",
+            "We aim to share up-to-date script content especially for popular games such as Roblox and Car Parking 1 & 2."
+        ],
+        aboutOfferTitle:"🔥 What We Offer",
+        aboutOffer:[
+            "The latest scripts for Roblox",
+            "Scripts for popular Roblox games",
+            "Script content for the Roblox games you request",
+            "Scripts for Car Parking 1 & 2",
+            "New games and updates",
+            "Gaming communities and trading groups"
+        ],
+        aboutWishTitle:"💡 Request a Game",
+        aboutWish:"If the game you are looking for is not on our list, you can contact us. Tell us which game you want to play or need a script for. When possible, content and scripts can be shared for the game you request.",
+        aboutContactTitle:"📩 Contact",
+        aboutContact:"If you have any questions, suggestions or script requests, you can reach us through our TikTok or Instagram account.",
+        aboutTikTok:"TikTok — @oyundunyasi.tr",
+        aboutInstagram:"Instagram — @oyundunyasi.tr1"
     }
 };
 
+let currentLang = "tr";
 
-function setLanguage(lang){
+/* ---------- yardımcılar ---------- */
+function makeIcon(icon, cls){
+    // emoji ise metin, değilse simpleicons görseli
+    if(/^[a-z0-9]+$/i.test(icon)){
+        const img = document.createElement("img");
+        img.src = "https://cdn.simpleicons.org/" + icon + "/ffffff";
+        img.alt = "";
+        img.loading = "lazy";
+        img.onerror = () => { img.replaceWith(document.createTextNode("🔗")); };
+        if(cls) img.className = cls;
+        return img;
+    }
+    return document.createTextNode(icon);
+}
 
-    document.documentElement.lang = lang;
+function makeLink(l, t){
+    const a = document.createElement("a");
+    a.className = "link" + (l.proof ? " proof" : "");
+    a.href = l.url;
+    a.target = "_blank";
+    a.rel = "noopener";
 
-    document.querySelectorAll("[data-i18n]").forEach(element=>{
+    const left = document.createElement("span");
+    left.className = "l-left";
+    const em = document.createElement("span");
+    em.className = "emoji";
+    em.textContent = l.emoji;
+    const label = document.createElement("span");
+    label.textContent = t[l.key];
+    left.append(em, label);
 
-        const key = element.getAttribute("data-i18n");
+    const arrow = document.createElement("span");
+    arrow.className = "arrow";
+    arrow.textContent = "↗";
 
-        if(translations[lang][key]){
-            element.textContent = translations[lang][key];
+    a.append(left, arrow);
+    return a;
+}
+
+function renderSections(t){
+    const wrap = document.getElementById("sections");
+    const nav  = document.getElementById("quickNav");
+    wrap.replaceChildren();
+    nav.replaceChildren();
+
+    sections.forEach((s, i) => {
+        // hızlı menü
+        const chip = document.createElement("a");
+        chip.className = "chip";
+        chip.href = "#" + s.id;
+        chip.append(makeIcon(s.icon));
+        const chipText = document.createElement("span");
+        chipText.textContent = t[s.titleKey];
+        chip.append(chipText);
+        nav.appendChild(chip);
+
+        // kart
+        const card = document.createElement("section");
+        card.className = "card";
+        card.id = s.id;
+        card.style.setProperty("--c", s.color);
+        card.style.animationDelay = (i * 70) + "ms";
+
+        const title = document.createElement("div");
+        title.className = "card-title";
+        const box = document.createElement("span");
+        box.className = "icon-box";
+        box.append(makeIcon(s.icon));
+        const name = document.createElement("span");
+        name.textContent = t[s.titleKey];
+        title.append(box, name);
+        card.appendChild(title);
+
+        if(s.groups){
+            s.groups.forEach(g => {
+                const sub = document.createElement("div");
+                sub.className = "subcategory";
+                const h3 = document.createElement("h3");
+                h3.append(makeIcon(g.icon || g.emoji));
+                const hs = document.createElement("span");
+                hs.textContent = t[g.titleKey];
+                h3.append(hs);
+                sub.appendChild(h3);
+
+                if(g.hintKey){
+                    const hint = document.createElement("p");
+                    hint.className = "subhint";
+                    hint.textContent = t[g.hintKey];
+                    sub.appendChild(hint);
+                }
+                g.links.forEach(l => sub.appendChild(makeLink(l, t)));
+                card.appendChild(sub);
+            });
+        }else{
+            s.links.forEach(l => card.appendChild(makeLink(l, t)));
         }
 
+        wrap.appendChild(card);
     });
-
-    localStorage.setItem("worldGameHubLanguage",lang);
-
-    showToast(lang === "tr" ? "Türkçe" : "English");
 }
 
+/* ---------- hakkında penceresi içeriği ---------- */
+function renderAbout(t){
+    const body = document.getElementById("aboutBody");
+    body.replaceChildren();
 
-/* =========================================================
-   SAYFA SİSTEMİ
-========================================================= */
+    const addP = txt => { const p = document.createElement("p"); p.textContent = txt; body.appendChild(p); };
+    const addH = txt => { const h = document.createElement("h4"); h.textContent = txt; body.appendChild(h); };
 
-function showPage(page){
+    t.aboutIntro.forEach(addP);
 
-    document.querySelectorAll(".page").forEach(section=>{
-        section.classList.remove("active");
+    addH(t.aboutOfferTitle);
+    const ul = document.createElement("ul");
+    ul.className = "about-list";
+    t.aboutOffer.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        ul.appendChild(li);
+    });
+    body.appendChild(ul);
+
+    addH(t.aboutWishTitle);
+    addP(t.aboutWish);
+
+    addH(t.aboutContactTitle);
+    addP(t.aboutContact);
+    body.appendChild(makeLink({emoji:"🎵", key:"aboutTikTok", url:"https://www.tiktok.com/@oyundunyasi.tr"}, t));
+    body.appendChild(makeLink({emoji:"📸", key:"aboutInstagram", url:"https://www.instagram.com/oyundunyasi.tr1?stkn=ZWF2eDB5bDJ5bHpp"}, t));
+}
+
+/* ---------- dil ---------- */
+function setLanguage(lang){
+    if(!translations[lang]) lang = "tr";
+    currentLang = lang;
+    const t = translations[lang];
+    document.documentElement.lang = lang;
+
+    const set = (id, v) => { document.getElementById(id).textContent = v; };
+    set("description", t.description);
+    set("aboutButton", t.aboutButton);
+    set("rulesButtonText", t.rulesButton);
+    set("proofButtonText", t.proofButton);
+    set("shareText", t.share);
+    set("rulesTitle", t.rulesTitle);
+    set("rulesSubtitle", t.rulesSubtitle);
+    set("rulesWarning", t.rulesWarning);
+    set("rulesThanks", t.rulesThanks);
+    set("rulesDone", t.rulesDone);
+
+    renderSections(t);
+    renderAbout(t);
+    set("aboutTitle", t.aboutTitle);
+    set("aboutDone", t.rulesDone);
+
+    const list = document.getElementById("rulesList");
+    list.replaceChildren();
+    t.rules.forEach((rule, index) => {
+        const li = document.createElement("li");
+        const number = document.createElement("span");
+        const text = document.createElement("span");
+        number.className = "rule-number";
+        number.textContent = String(index + 1).padStart(2, "0");
+        text.textContent = rule;
+        li.append(number, text);
+        list.appendChild(li);
     });
 
-    const target = document.getElementById(page);
+    document.getElementById("trBtn").classList.toggle("active", lang === "tr");
+    document.getElementById("enBtn").classList.toggle("active", lang === "en");
 
-    if(target){
-        target.classList.add("active");
+    try{ localStorage.setItem("language", lang); }catch(e){}
+}
+
+/* ---------- kurallar penceresi ---------- */
+let lastFocus = null;
+
+function openModal(id, focusId){
+    const o = document.getElementById(id);
+    lastFocus = document.activeElement;
+    o.classList.add("show");
+    o.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    document.getElementById(focusId).focus();
+}
+
+function closeModal(id){
+    const o = document.getElementById(id);
+    o.classList.remove("show");
+    o.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    if(lastFocus) lastFocus.focus();
+}
+
+function openRules(){ openModal("rulesOverlay", "rulesDone"); }
+function closeRules(){ closeModal("rulesOverlay"); }
+function openAbout(){ openModal("aboutOverlay", "aboutDone"); }
+
+function overlayClick(e){
+    if(e.target.classList.contains("rules-overlay")) closeModal(e.target.id);
+}
+
+document.addEventListener("keydown", e => {
+    const o = document.querySelector(".rules-overlay.show");
+    if(!o) return;
+
+    if(e.key === "Escape"){ closeModal(o.id); return; }
+
+    // Tab ile pencerenin dışına çıkmayı engelle
+    if(e.key === "Tab"){
+        const f = o.querySelectorAll("button");
+        const first = f[0], last = f[f.length - 1];
+        if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
     }
-
-    document.getElementById("navLinks").classList.remove("open");
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-    history.replaceState(null,"","#"+page);
-}
-
-
-/* =========================================================
-   MOBİL MENÜ
-========================================================= */
-
-function toggleMenu(){
-
-    document
-        .getElementById("navLinks")
-        .classList
-        .toggle("open");
-
-}
-
-
-/* =========================================================
-   TEMA
-========================================================= */
-
-function toggleTheme(){
-
-    document.body.classList.toggle("light");
-
-    const light =
-        document.body.classList.contains("light");
-
-    localStorage.setItem(
-        "worldGameHubTheme",
-        light ? "light" : "dark"
-    );
-
-}
-
-
-/* =========================================================
-   OYUN ARAMA
-========================================================= */
-
-function searchGames(){
-
-    const input =
-        document.getElementById("gameSearch");
-
-    const query =
-        input.value.toLowerCase().trim();
-
-    document
-        .querySelectorAll("#gamesGrid .game-card")
-        .forEach(card=>{
-
-            const name =
-                card.dataset.game.toLowerCase();
-
-            card.style.display =
-                name.includes(query)
-                ? ""
-                : "none";
-
-        });
-
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-function showToast(message){
-
-    const toast =
-        document.getElementById("toast");
-
-    toast.textContent = message;
-
-    toast.classList.add("show");
-
-    clearTimeout(toastTimer);
-
-    toastTimer = setTimeout(()=>{
-        toast.classList.remove("show");
-    },1800);
-
-}
-
-
-/* =========================================================
-   YUKARI ÇIK
-========================================================= */
-
-window.addEventListener("scroll",()=>{
-
-    document.getElementById("backTop").style.display =
-        window.scrollY > 400
-        ? "block"
-        : "none";
-
 });
 
+/* ---------- paylaş ---------- */
+function showToast(msg){
+    const el = document.getElementById("toast");
+    el.textContent = msg;
+    el.classList.add("show");
+    setTimeout(() => el.classList.remove("show"), 2200);
+}
 
-/* =========================================================
-   BAŞLANGIÇ
-========================================================= */
+async function sharePage(){
+    const url = location.href;
+    try{
+        if(navigator.share){
+            await navigator.share({title:"WORLD_GAMEHUB", url});
+            return;
+        }
+    }catch(e){ return; }
 
-const savedLanguage =
-    localStorage.getItem("worldGameHubLanguage") || "tr";
+    try{
+        await navigator.clipboard.writeText(url);
+        showToast(translations[currentLang].copied);
+    }catch(e){
+        showToast(url);
+    }
+}
 
+/* ---------- yukarı çık butonu ---------- */
+window.addEventListener("scroll", () => {
+    document.getElementById("toTop").classList.toggle("show", window.scrollY > 500);
+}, {passive:true});
+
+/* ---------- başlangıç ---------- */
+let savedLanguage = null;
+try{ savedLanguage = localStorage.getItem("language"); }catch(e){}
+if(!savedLanguage){
+    savedLanguage = (navigator.language || "tr").toLowerCase().startsWith("tr") ? "tr" : "en";
+}
 setLanguage(savedLanguage);
-
-const savedTheme =
-    localStorage.getItem("worldGameHubTheme");
-
-if(savedTheme === "light"){
-    document.body.classList.add("light");
-}
-
-
-/* =========================================================
-   URL HASH
-========================================================= */
-
-const hash =
-    location.hash.replace("#","");
-
-const allowedPages = [
-    "home",
-    "games",
-    "popular",
-    "featured",
-    "updates",
-    "community",
-    "contact",
-    "faq",
-    "rules",
-    "privacy",
-    "terms",
-    "about"
-];
-
-if(allowedPages.includes(hash)){
-    showPage(hash);
-}
-
 </script>
 
 </body>
-  </html>
+</html>
