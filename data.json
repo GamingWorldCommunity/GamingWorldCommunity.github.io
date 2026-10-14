@@ -11,7 +11,125 @@
     }
   },
   "tasks": [],
-  "links": [],
+  "links": [
+    {
+      "id": "l1",
+      "kind": "link",
+      "title": {
+        "tr": "Roblox Script Kanalı",
+        "en": "Roblox Scripts Channel"
+      },
+      "desc": {
+        "tr": "Roblox scriptleri ve güncellemeler",
+        "en": "Roblox scripts and updates"
+      },
+      "url": "https://t.me/World_GameHub"
+    },
+    {
+      "id": "l2",
+      "kind": "link",
+      "title": {
+        "tr": "Car Parking Script Kanalı",
+        "en": "Car Parking Scripts Channel"
+      },
+      "desc": {
+        "tr": "Car Parking Multiplayer 1 & 2 içerikleri",
+        "en": "Car Parking Multiplayer 1 & 2 content"
+      },
+      "url": "https://t.me/+TG8oigYcB8szMjI8"
+    },
+    {
+      "id": "l3",
+      "kind": "link",
+      "title": {
+        "tr": "Takas ve Sohbet Grubu",
+        "en": "Trading & Chat Group"
+      },
+      "desc": {
+        "tr": "Topluluk, takas ve sohbet",
+        "en": "Community, trading and chat"
+      },
+      "url": "https://t.me/oyundunyasi_takas_sohbet"
+    },
+    {
+      "id": "l4",
+      "kind": "link",
+      "title": {
+        "tr": "Güvence Kanalı",
+        "en": "Proof Channel"
+      },
+      "desc": {
+        "tr": "İşlem sonrası paylaşılan güvence gönderileri",
+        "en": "Transaction proof posts"
+      },
+      "url": "https://t.me/world_gamehubproof"
+    },
+    {
+      "id": "l5",
+      "kind": "link",
+      "title": {
+        "tr": "TikTok",
+        "en": "TikTok"
+      },
+      "desc": {
+        "tr": "Kısa videolar ve güncellemeler",
+        "en": "Short videos and updates"
+      },
+      "url": "https://www.tiktok.com/@oyundunyasi.tr"
+    },
+    {
+      "id": "l6",
+      "kind": "link",
+      "title": {
+        "tr": "YouTube",
+        "en": "YouTube"
+      },
+      "desc": {
+        "tr": "Videolar ve içerikler",
+        "en": "Videos and content"
+      },
+      "url": "https://www.youtube.com/@Game_WorldHub"
+    },
+    {
+      "id": "l7",
+      "kind": "link",
+      "title": {
+        "tr": "Discord Sunucusu",
+        "en": "Discord Server"
+      },
+      "desc": {
+        "tr": "Topluluğa katıl",
+        "en": "Join the community"
+      },
+      "url": "https://discord.gg/tsugqtvQtm"
+    },
+    {
+      "id": "l8",
+      "kind": "link",
+      "title": {
+        "tr": "Roblox Grubu",
+        "en": "Roblox Group"
+      },
+      "desc": {
+        "tr": "WORLD_GAMEHUB Roblox grubu",
+        "en": "WORLD_GAMEHUB Roblox group"
+      },
+      "url": "https://www.roblox.com/groups/881008385"
+    },
+    {
+      "id": "l9",
+      "kind": "link",
+      "title": {
+        "tr": "Instagram",
+        "en": "Instagram"
+      },
+      "desc": {
+        "tr": "İletişim ve güncellemeler",
+        "en": "Contact and updates"
+      },
+      "url": "https://www.instagram.com/oyundunyasi.tr1"
+    }
+  ],
   "listings": [],
   "socials": [
     {
@@ -23,12 +141,30 @@
     },
     {
       "id": "s2",
+      "label": "Telegram",
+      "url": "https://t.me/World_GameHub",
+      "icon": "✈️"
+    },
+    {
+      "id": "s3",
       "label": "TikTok",
       "url": "https://www.tiktok.com/@oyundunyasi.tr",
       "icon": "🎵"
     },
     {
-      "id": "s3",
+      "id": "s4",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@Game_WorldHub",
+      "icon": "▶️"
+    },
+    {
+      "id": "s5",
+      "label": "Discord",
+      "url": "https://discord.gg/tsugqtvQtm",
+      "icon": "💬"
+    },
+    {
+      "id": "s6",
       "label": "Instagram",
       "url": "https://www.instagram.com/oyundunyasi.tr1",
       "icon": "📸"

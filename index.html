@@ -172,12 +172,25 @@ const DEFAULT = {
     }
   },
   tasks: [],
-  links: [],
+  links: [
+    {id:"l1",kind:"link",title:{tr:"Roblox Script Kanalı",en:"Roblox Scripts Channel"},desc:{tr:"Roblox scriptleri ve güncellemeler",en:"Roblox scripts and updates"},url:"https://t.me/World_GameHub"},
+    {id:"l2",kind:"link",title:{tr:"Car Parking Script Kanalı",en:"Car Parking Scripts Channel"},desc:{tr:"Car Parking Multiplayer 1 & 2 içerikleri",en:"Car Parking Multiplayer 1 & 2 content"},url:"https://t.me/+TG8oigYcB8szMjI8"},
+    {id:"l3",kind:"link",title:{tr:"Takas ve Sohbet Grubu",en:"Trading & Chat Group"},desc:{tr:"Topluluk, takas ve sohbet",en:"Community, trading and chat"},url:"https://t.me/oyundunyasi_takas_sohbet"},
+    {id:"l4",kind:"link",title:{tr:"Güvence Kanalı",en:"Proof Channel"},desc:{tr:"İşlem sonrası paylaşılan güvence gönderileri",en:"Transaction proof posts"},url:"https://t.me/world_gamehubproof"},
+    {id:"l5",kind:"link",title:{tr:"TikTok",en:"TikTok"},desc:{tr:"Kısa videolar ve güncellemeler",en:"Short videos and updates"},url:"https://www.tiktok.com/@oyundunyasi.tr"},
+    {id:"l6",kind:"link",title:{tr:"YouTube",en:"YouTube"},desc:{tr:"Videolar ve içerikler",en:"Videos and content"},url:"https://www.youtube.com/@Game_WorldHub"},
+    {id:"l7",kind:"link",title:{tr:"Discord Sunucusu",en:"Discord Server"},desc:{tr:"Topluluğa katıl",en:"Join the community"},url:"https://discord.gg/tsugqtvQtm"},
+    {id:"l8",kind:"link",title:{tr:"Roblox Grubu",en:"Roblox Group"},desc:{tr:"WORLD_GAMEHUB Roblox grubu",en:"WORLD_GAMEHUB Roblox group"},url:"https://www.roblox.com/groups/881008385"},
+    {id:"l9",kind:"link",title:{tr:"Instagram",en:"Instagram"},desc:{tr:"İletişim ve güncellemeler",en:"Contact and updates"},url:"https://www.instagram.com/oyundunyasi.tr1"}
+  ],
   listings: [],
   socials: [
     {id:"s1", label:"Güvence", url:"https://t.me/world_gamehubproof", icon:"🛡️", hl:true},
-    {id:"s2", label:"TikTok", url:"https://www.tiktok.com/@oyundunyasi.tr", icon:"🎵"},
-    {id:"s3", label:"Instagram", url:"https://www.instagram.com/oyundunyasi.tr1", icon:"📸"}
+    {id:"s2", label:"Telegram", url:"https://t.me/World_GameHub", icon:"✈️"},
+    {id:"s3", label:"TikTok", url:"https://www.tiktok.com/@oyundunyasi.tr", icon:"🎵"},
+    {id:"s4", label:"YouTube", url:"https://www.youtube.com/@Game_WorldHub", icon:"▶️"},
+    {id:"s5", label:"Discord", url:"https://discord.gg/tsugqtvQtm", icon:"💬"},
+    {id:"s6", label:"Instagram", url:"https://www.instagram.com/oyundunyasi.tr1", icon:"📸"}
   ]
 };
 
@@ -216,7 +229,7 @@ const setDone = a => { try{ localStorage.setItem("wgh_done", JSON.stringify(a));
 const previews = {};   // yüklenen fotoğraflar yayına girene kadar burada görünür
 
 let data = clone(DEFAULT);
-let admin = false, token = localStorage.getItem("wgh_token") || "", branch = "main";
+let admin = false, token = "", branch = "main";
 
 let toastTimer;
 function toast(msg, kind){
@@ -284,6 +297,9 @@ function toolsFor(sec, i, arr){
 
 function render(){
   document.title = data.settings.title || "WORLD_GAMEHUB";
+  // Boş görev/ilan alanları ziyaretçiye gösterilmez; yönetici modunda ekleme düğmeleri görünür kalır.
+  $("#secTasks").style.display = (data.tasks.length || admin) ? "" : "none";
+  $("#secMarket").style.display = (data.listings.length || admin) ? "" : "none";
   $("#siteTitle").textContent = data.settings.title || "WORLD_GAMEHUB";
   $("#siteTag").textContent = tx(data.settings.tagline);
   $("#aboutTxt").textContent = tx(data.settings.about);
@@ -407,17 +423,17 @@ async function verify(tok){
 }
 async function enterAdmin(tok){
   await verify(tok);
-  token=tok; localStorage.setItem("wgh_token",tok); admin=true; document.body.classList.add("admin"); render();
+  token=tok; admin=true; document.body.classList.add("admin"); render();
 }
 function leaveAdmin(){
-  admin=false; token=""; localStorage.removeItem("wgh_token"); document.body.classList.remove("admin"); render(); toast("Çıkış yapıldı");
+  admin=false; token=""; document.body.classList.remove("admin"); render(); toast("Çıkış yapıldı");
 }
 
 function openLogin(){
   if(admin) return;
   openModal(m=>{
     mHead(m,"🔒 Yönetici girişi");
-    m.append(el("p","mdesc","Sadece site sahibi düzenleyebilir. Aşağıya GitHub erişim anahtarını (token) yapıştır; telefonda saklanır, kimseyle paylaşılmaz."));
+    m.append(el("p","mdesc","Sadece site sahibi düzenleyebilir. GitHub erişim anahtarını (token) buraya yapıştır. Güvenlik için anahtar tarayıcıya kaydedilmez; yalnızca bu sayfa açıkken bellekte tutulur."));
     const inp=el("input","in"); inp.type="password"; inp.placeholder="github_pat_..."; inp.autocomplete="off";
     m.append(inp);
     const ol=el("ol","steps",
@@ -554,9 +570,8 @@ $("#bShare").onclick=async()=>{ const u=location.origin+"/"; try{ if(navigator.s
   const th=localStorage.getItem("wgh_theme"); if(th){ document.documentElement.dataset.theme=th; $("meta[name=theme-color]").content=th==="dark"?"#07070f":"#f3f4fb"; }
   render();
   fetch(DATA_FILE+"?t="+Date.now()).then(r=>r.ok?r.json():null).then(d=>{
-    if(d && d.settings){ data={...clone(DEFAULT),...d,settings:{...DEFAULT.settings,...d.settings}}; render(); }
+    if(d && typeof d === "object"){ data={...clone(DEFAULT),...d,settings:{...DEFAULT.settings,...(d.settings||{})},tasks:Array.isArray(d.tasks)?d.tasks:clone(DEFAULT.tasks),links:Array.isArray(d.links)?d.links:clone(DEFAULT.links),listings:Array.isArray(d.listings)?d.listings:clone(DEFAULT.listings),socials:Array.isArray(d.socials)?d.socials:clone(DEFAULT.socials)}; render(); }
   }).catch(()=>{});
-  if(token) enterAdmin(token).catch(()=>{ token=""; localStorage.removeItem("wgh_token"); });
   if(location.hash==="#admin") openLogin();
 })();
 </script>
